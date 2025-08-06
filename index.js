@@ -12,7 +12,7 @@ class CommentManager {
     this.comments = [];
     this.currentUser = null;
     this.ownerName = "GK Learn Study";
-    this.storageKey = "blogComments";
+    this.storageKey = "blogComments_" + window.location.pathname;
 
     this.commentSection = document.getElementById('comment-section');
     this.commentAuthArea = document.getElementById('comment-auth-area');
