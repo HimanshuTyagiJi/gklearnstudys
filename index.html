@@ -194,19 +194,15 @@
                              <div id="comment-section">
                                 <h3>Leave a Comment</h3>
                                 <div id="comment-auth-area"></div>
-                                <form id="comment-form" style="display: none;">
-                                    <input type="text" id="comment-name" placeholder="Your Name" disabled>
-                                    <input type="text" id="comment-subject" placeholder="Subject" required>
-                                    <textarea id="comment-text" placeholder="Write your comment here..." rows="5" required></textarea>
-                                    <button type="submit">Post Comment</button>
-                                </form>
-                                <p class="comment-notice">Comments are visible to all users on this device. They are stored locally in your browser and are specific to this page.</p>
-                                <div class="comments-list-container">
-                                    <h4 id="comments-title">Comments</h4>
-                                    <div id="comments-list">
-                                        <p>No comments yet. Be the first to comment!</p>
-                                    </div>
-                                </div>
+                             <iframe
+  src="https://comment-murex-beta.vercel.app/"
+  width="100%"
+  height="500px"
+  style="border: none;"
+  loading="lazy"
+></iframe>
+
+                              
                             </div>
                          </div>
                     </aside>
