@@ -51,9 +51,172 @@
         <meta name="msapplication-TileImage" content="https://gklearnstudy.in/images/conversion.webp" />
         <meta name="msapplication-config" content="browserconfig.xml" />
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="post.css">
-    <link rel="stylesheet" href="/index.css">
-</head>
+        <style>
+          :root {
+            --primary-color: #007bff;
+            --primary-hover-color: #0056b3;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --label-color: #495057;
+            --border-color-comment: #dee2e6; /* Renamed to avoid conflict */
+            --error-color: #dc3545;
+            --success-color: #28a745;
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+              'Helvetica Neue', Arial, sans-serif;
+          }
+
+          #new-comment-system-container {
+             font-family: var(--font-family);
+          }
+
+          .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+          }
+
+          .form-group {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--label-color);
+          }
+
+          .form-group input,
+          .form-group textarea {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color-comment);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: var(--font-family);
+            transition: border-color 0.2s, box-shadow 0.2s;
+          }
+
+          .form-group input:focus,
+          .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+          }
+
+          .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+          }
+
+          .submit-btn,
+          .refresh-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .submit-btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            align-self: flex-start;
+            gap: 0.5rem;
+            min-width: 150px;
+          }
+
+          .refresh-btn {display:none;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            line-height: 1;
+          }
+
+          .submit-btn:hover:not(:disabled),
+          .refresh-btn:hover:not(:disabled) {
+            background-color: var(--primary-hover-color);
+          }
+
+          .submit-btn:disabled,
+          .refresh-btn:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+            opacity: 0.7;
+          }
+
+          .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            width: 18px;
+            height: 18px;
+            animation: spin 1s ease-in-out infinite;
+          }
+
+          .refresh-btn .icon.loading {
+            animation: spin 1s linear infinite;
+          }
+
+          @keyframes spin {
+            to {
+              transform: rotate(360deg);
+            }
+          }
+
+          .status-message {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+          }
+
+          .status-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+          }
+
+          .status-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+          }
+
+          .comments-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+          }
+
+          .comments-section .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color-comment);
+            padding-bottom: .75rem;
+            margin-bottom: 0;
+          }
+
+          .comments-section h4 {
+            margin: 0;
+            padding: 0;
+            border: none;
+          }
+
+          .comments-iframe {
+            width: 100%;
+            border: 1px solid var(--border-color-comment);
+            border-radius: 4px;
+          }
+        </style>
+    </head>
     <body>
         <main class="container">
             <div id="root">
