@@ -1,4 +1,3 @@
-
 // Import functions from the Firebase v9 SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
 import { 
@@ -11,16 +10,12 @@ import {
     serverTimestamp,
     doc,
     deleteDoc,
-    getDocs
+    getDocs,
+    where
 } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
 // =================================================================================
 // 🔥🔥🔥 ACTION REQUIRED: PASTE YOUR FIREBASE CONFIGURATION HERE 🔥🔥🔥
-// =================================================================================
-// 1. Go to your Firebase project's settings.
-// 2. Under "Your apps", find your web app.
-// 3. Under "SDK setup and configuration", copy the config object.
-// 4. Paste it here to replace the placeholder object below.
 // =================================================================================
 const firebaseConfig = {
   apiKey: "AIzaSyCFIKqQ5OICMZhWPtZqmgem0bEW7QpoPcw",
@@ -32,14 +27,27 @@ const firebaseConfig = {
   measurementId: "G-2HX1M5QQ44"
 };
 
-
 // --- Declare variables for DOM Elements ---
 let commentFormSection, commentForm, nameInput, commentInput, submitButton, commentsList, charCounter;
 
 // --- Firebase and DB instance ---
 let db;
 
-// --- Main Application Logic ---
+// --- Helper Functions ---
+
+function getPageIdentifier() {
+    // Generate a consistent ID from the page's URL path to keep comments page-specific.
+    // We use the pathname, remove leading/trailing slashes, and replace inner slashes.
+    const path = window.location.pathname;
+    
+    // Handle the root path as a special case for clarity.
+    if (path === '/' || path === '/index.html' || path === '') {
+        return 'main_page';
+    }
+    
+    // Create a clean ID that is valid for Firestore: /blog/my-post/ -> blog_my-post
+    return path.substring(1).replace(/\/$/, '').replace(/\//g, '_');
+}
 
 function showConfigError() {
     const commentsListElement = document.getElementById('comments-list');
@@ -47,34 +55,11 @@ function showConfigError() {
         commentsListElement.innerHTML = `
             <div class="config-error">
                 <h3><span class="emoji">⚙️</span> Action Required: Connect Your Firebase Project</h3>
-                <p>This comment widget isn't connected to a database yet. To make it work, you need to configure it with your own Firebase project credentials.</p>
-                <p><strong>Don't worry, it's a one-time setup!</strong></p>
-                
-                <h4>Step 1: Get your Firebase Config</h4>
-                <p>If you don't have one, create a new project at <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer">Firebase Console</a>, add a web app, and you'll be given a <code>firebaseConfig</code> object.</p>
-
-                <h4>Step 2: Update the Code</h4>
-                <p>Open the <code>index.js</code> file on your web server and find the <code>firebaseConfig</code> object near the top. Replace the placeholder values (like <code>"YOUR_API_KEY"</code>) with the actual values from your Firebase project.</p>
-
-                <h4>Step 3: Enable Firestore & Set Rules</h4>
-                <p>In your Firebase project dashboard:</p>
-                <ol>
-                    <li>Go to the <strong>Firestore Database</strong> section and create a new database in <strong>production mode</strong>.</li>
-                    <li>Go to the <strong>Rules</strong> tab and paste the following rules to allow anyone to read and write comments.
-                        <pre><code>rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // This allows read/write access to any document in any collection
-    // Be sure this is what you want for a public comment section.
-    match /{document=**} {
-      allow read, write: if true;
-    }
-  }
-}</code></pre>
-                    </li>
-                    <li>Click <strong>Publish</strong>.</li>
-                </ol>
-                 <p class="final-note">Once you've done these steps, refresh your webpage, and the comment section will be live!</p>
+                <p>To make it work, you need to configure this widget with your own Firebase project credentials.</p>
+                <h4>Step 1: Update the Code</h4>
+                <p>Open the <code>index.js</code> file and replace the placeholder <code>firebaseConfig</code> object with your own.</p>
+                <h4>Step 2: Update Firestore Rules</h4>
+                <p>In your Firebase project dashboard, go to the <strong>Firestore Database → Rules</strong> tab and paste the rules provided in the updated installation guide. <strong>The old rules will not work with this version.</strong></p>
             </div>
         `;
     }
@@ -86,77 +71,82 @@ function showConnectionError(error) {
         commentsListElement.innerHTML = `
             <div class="config-error">
                 <h3><span class="emoji">🔌</span> Firebase Connection Error</h3>
-                <p>We see you've added a Firebase configuration, but we couldn't connect. This often happens if the website's address (domain) isn't authorized in your Firebase project.</p>
-                
+                <p>We see you've added a config, but we couldn't connect. This often happens if the website's domain isn't authorized in Firebase.</p>
                 <h4>Troubleshooting Steps:</h4>
                 <ol>
-                    <li>
-                        <strong>IMPORTANT: Authorize Your Website's Domain</strong><br>
-                        This is the most common fix. In your <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer">Firebase Console</a>, go to:
-                        <br><strong>Authentication → Settings → Authorized domains</strong>.<br>
-                        Click "Add domain" and enter the domain of the website where you are using the comments (e.g., <code>yourwebsite.com</code>).
-                    </li>
-                    <li><strong>Correct Credentials:</strong> Double-check that the <code>apiKey</code> and <code>projectId</code> in your <code>index.js</code> exactly match your Firebase project's web app config.</li>
-                    <li><strong>Firestore Database Enabled:</strong> Have you gone to the "Firestore Database" section in your Firebase project and clicked "Create database"? This is a required step.</li>
-                    <li><strong>Security Rules:</strong> Ensure your Firestore "Rules" are set up to allow reading/writing, as shown in the initial setup guide.</li>
-                    <li><strong>Browser Issues:</strong> Sometimes ad-blockers or strict privacy settings can interfere. Try disabling them for this page.</li>
+                    <li><strong>Authorize Your Domain:</strong> In your <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer">Firebase Console</a>, go to <strong>Authentication → Settings → Authorized domains</strong> and add your website's domain (e.g., <code>yourwebsite.com</code>).</li>
+                    <li><strong>Correct Credentials:</strong> Double-check your <code>firebaseConfig</code> in <code>index.js</code>.</li>
+                    <li><strong>Firestore Enabled:</strong> Make sure you have created a Firestore Database in your project.</li>
+                    <li><strong>Security Rules:</strong> Ensure your Firestore "Rules" are updated to the latest version from the installation guide. The new rules are required.</li>
                 </ol>
-                 <p class="final-note">For more details, check the browser's developer console (press F12) for the specific error message from Firebase.</p>
-                 <p><strong>Original Error:</strong> <code>${escapeHTML(error.message)}</code></p>
+                <p><strong>Original Error:</strong> <code>${escapeHTML(error.message)}</code></p>
             </div>
         `;
     }
 }
 
+function showMissingFilesError(type) {
+    const widgetContainer = document.querySelector('.firebase-comments-widget');
+    if (!widgetContainer) return;
+    const message = type === 'css' ?
+        `<h3><span class="emoji">🎨</span> CSS File Not Loaded</h3><p>The link to <code>index.css</code> is broken or incorrect. Please check the <code>&lt;link&gt;</code> tag in your HTML's <code>&lt;head&gt;</code>.</p>` :
+        `<h3><span class="emoji">👀</span> HTML Structure Error</h3><p>The comment widget's HTML is missing or incomplete. Please copy the entire <code>&lt;div class="firebase-comments-widget"&gt;...&lt;/div&gt;</code> block from the guide.</p>`;
+    
+    widgetContainer.innerHTML = `<div class="container" style="margin: 0; max-width: 100%;"><div class="config-error">${message}</div></div>`;
+}
+
+// --- Main Application Logic ---
 
 function initApp() {
-    // Find elements within the host page
-    commentFormSection = document.querySelector('.comment-form-section');
-    commentForm = document.getElementById('comment-form');
-    nameInput = document.getElementById('name');
-    commentInput = document.getElementById('comment');
-    submitButton = document.getElementById('submit-button');
-    commentsList = document.getElementById('comments-list');
-    charCounter = document.getElementById('char-counter');
-
-    if (!commentFormSection || !commentsList) {
-        console.error("Firebase Comments: Required HTML elements not found. Make sure your HTML includes the necessary structure (e.g., .comment-form-section and #comments-list).");
+    const widgetContainer = document.querySelector('.firebase-comments-widget');
+    if (!widgetContainer) {
+        console.error("Firebase Comments: Main widget container '.firebase-comments-widget' not found.");
         return;
     }
 
-    commentsList.innerHTML = `
-        <div class="spinner-container">
-            <div class="spinner"></div>
-            <p>Connecting to database...</p>
-        </div>
-    `;
+    commentFormSection = widgetContainer.querySelector('.comment-form-section');
+    commentForm = widgetContainer.querySelector('#comment-form');
+    nameInput = widgetContainer.querySelector('#name');
+    commentInput = widgetContainer.querySelector('#comment');
+    submitButton = widgetContainer.querySelector('#submit-button');
+    commentsList = widgetContainer.querySelector('#comments-list');
+    charCounter = widgetContainer.querySelector('#char-counter');
+    const containerElement = widgetContainer.querySelector('.container');
+
+    if (!commentFormSection || !commentsList || !commentForm || !containerElement) {
+        showMissingFilesError('html');
+        return;
+    }
+    if (getComputedStyle(containerElement).maxWidth !== '700px') {
+        showMissingFilesError('css');
+        return;
+    }
+    
+    commentsList.innerHTML = `<div class="spinner-container"><div class="spinner"></div><p>Loading comments...</p></div>`;
 
     try {
         if (!firebaseConfig.apiKey || firebaseConfig.apiKey.includes("YOUR_")) {
-             throw new Error("Invalid Firebase API Key: Please replace placeholder values in firebaseConfig.");
+             throw new Error("Invalid Firebase API Key");
         }
+        
+        const pageId = getPageIdentifier();
+        const commentsCollectionPath = ['pages', pageId, 'comments'];
 
         const app = initializeApp(firebaseConfig);
         db = getFirestore(app);
 
         commentFormSection.hidden = false;
         
-        commentForm.addEventListener('submit', handleFormSubmit);
+        commentForm.addEventListener('submit', (event) => handleFormSubmit(event, commentsCollectionPath));
         commentInput.addEventListener('input', updateCharCounter);
         
-        const commentsQuery = query(collection(db, 'comments'), orderBy('timestamp', 'desc'));
+        const commentsQuery = query(collection(db, ...commentsCollectionPath), orderBy('timestamp', 'desc'));
         
         onSnapshot(commentsQuery, 
-            displayComments,
+            (snapshot) => displayComments(snapshot, commentsCollectionPath),
             (error) => {
                 console.error("Firestore snapshot error:", error.code, error.message);
-                let userMessage = '<p class="error-message">Could not load comments. An unknown error occurred.</p>';
-                if (error.code === 'permission-denied') {
-                    userMessage = `<div class="config-error"><h3>Permission Denied</h3><p>Could not fetch comments. Check your <strong>Firestore Security Rules</strong>.</p></div>`;
-                } else if (error.message && error.message.includes("Cloud Firestore backend")) {
-                     userMessage = `<div class="config-error"><h3>Connection Failed</h3><p>Could not connect to the database. Check your internet, ensure Firestore is created, and check ad-blockers.</p></div>`;
-                }
-                commentsList.innerHTML = userMessage;
+                showConnectionError(error);
             }
         );
         updateCharCounter();
@@ -171,7 +161,7 @@ function initApp() {
     }
 }
 
-async function handleFormSubmit(event) {
+async function handleFormSubmit(event, collectionPath) {
     event.preventDefault();
     const name = nameInput.value.trim();
     const comment = commentInput.value.trim();
@@ -181,7 +171,7 @@ async function handleFormSubmit(event) {
     submitButton.textContent = 'Posting...';
 
     try {
-        await addDoc(collection(db, 'comments'), {
+        await addDoc(collection(db, ...collectionPath), {
             name: name,
             comment: comment,
             timestamp: serverTimestamp()
@@ -190,14 +180,14 @@ async function handleFormSubmit(event) {
         updateCharCounter();
     } catch (error) {
         console.error("Error adding comment:", error.message);
-        alert("Error submitting comment. Check console for details.");
+        alert("Error submitting comment. Check console and Firestore rules.");
     } finally {
         submitButton.disabled = false;
         submitButton.textContent = 'Post Comment';
     }
 }
 
-function displayComments(snapshot) {
+function displayComments(snapshot, collectionPath) {
     commentsList.innerHTML = '';
     if (snapshot.empty) {
         commentsList.innerHTML = `<div class="no-comments"><p><strong>No comments yet.</strong></p><p>Be the first to post a comment!</p></div>`;
@@ -205,9 +195,10 @@ function displayComments(snapshot) {
     }
     snapshot.forEach(doc => {
         try {
-            const commentElement = createCommentElement(doc.id, doc.data());
+            const commentElement = createCommentElement(doc.id, doc.data(), collectionPath);
             commentsList.appendChild(commentElement);
-            fetchAndDisplayReplies(commentElement, ['comments', doc.id, 'replies']);
+            const repliesPath = [...collectionPath, doc.id, 'replies'];
+            fetchAndDisplayReplies(commentElement, repliesPath);
         } catch (error) {
             console.error("Failed to render a comment:", error.message, doc.data());
         }
@@ -217,38 +208,29 @@ function displayComments(snapshot) {
 async function handleReplySubmit(event, replyCollectionPath) {
     event.preventDefault();
     const form = event.target;
-    const nameInputReply = form.querySelector('.reply-name-input');
-    const textarea = form.querySelector('.reply-text-input');
-    const name = nameInputReply.value.trim();
-    const replyText = textarea.value.trim();
-
-    if (name === '' || replyText === '') {
-        alert("Please provide both a name and a reply.");
-        return;
-    };
+    const name = form.querySelector('.reply-name-input').value.trim();
+    const replyText = form.querySelector('.reply-text-input').value.trim();
+    if (name === '' || replyText === '') return;
 
     const submitBtn = form.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
 
     try {
-        await addDoc(collection(db, ...replyCollectionPath), { name: name, comment: replyText, timestamp: serverTimestamp() });
+        await addDoc(collection(db, ...replyCollectionPath), { name, comment: replyText, timestamp: serverTimestamp() });
         const container = form.closest('.reply-form-container');
-        if (container) {
-            container.style.display = 'none';
-            container.innerHTML = '';
-        }
+        if (container) container.innerHTML = '';
     } catch (error) {
         console.error("Error adding reply:", error.message);
-        alert("Failed to post reply. Please check your Firestore Security Rules.");
+        alert("Failed to post reply.");
         submitBtn.disabled = false;
     }
 }
 
 async function deleteDocAndSubcollections(pathSegments) {
-    const repliesPath = [...pathSegments, 'replies'];
-    const repliesSnapshot = await getDocs(collection(db, ...repliesPath));
-    const deletePromises = repliesSnapshot.docs.map(replyDoc => deleteDocAndSubcollections([...repliesPath, replyDoc.id]));
-    await Promise.all(deletePromises);
+    const subcollectionsSnapshot = await getDocs(collection(db, ...pathSegments, 'replies'));
+    for (const replyDoc of subcollectionsSnapshot.docs) {
+        await deleteDocAndSubcollections([...pathSegments, 'replies', replyDoc.id]);
+    }
     await deleteDoc(doc(db, ...pathSegments));
 }
 
@@ -257,8 +239,8 @@ async function handleDeleteClick(pathSegments) {
     try {
         await deleteDocAndSubcollections(pathSegments);
     } catch(error) {
-        console.error("Error deleting document: ", error.message);
-        alert("Could not delete item. See console for details.");
+        console.error("Error deleting document:", error.message);
+        alert("Could not delete item.");
     }
 }
 
@@ -273,8 +255,7 @@ function fetchAndDisplayReplies(parentElement, repliesCollectionPath) {
             try {
                 const replyElement = createReplyElement(doc.id, doc.data(), repliesCollectionPath);
                 repliesContainer.appendChild(replyElement);
-                const subReplyCollectionPath = [...repliesCollectionPath, doc.id, 'replies'];
-                fetchAndDisplayReplies(replyElement, subReplyCollectionPath);
+                fetchAndDisplayReplies(replyElement, [...repliesCollectionPath, doc.id, 'replies']);
             } catch (error) {
                  console.error("Failed to render a reply:", error.message, doc.data());
             }
@@ -282,52 +263,46 @@ function fetchAndDisplayReplies(parentElement, repliesCollectionPath) {
     });
 }
 
-function createCommentElement(id, data) {
+function createCommentElement(id, data, parentCollectionPath) {
     const element = document.createElement('div');
     element.classList.add('comment-item');
-    element.dataset.id = id;
-    const date = timeAgo(safeToDate(data.timestamp));
-    const path = ['comments', id];
+    const myPath = [...parentCollectionPath, id];
 
     element.innerHTML = `
         <div class="comment-header">
             <span class="comment-author">${escapeHTML(data.name)}</span>
-            <span class="comment-date">${date}</span>
+            <span class="comment-date">${timeAgo(safeToDate(data.timestamp))}</span>
         </div>
         <p class="comment-body">${escapeHTML(data.comment)}</p>
         <div class="comment-actions">
             <button class="action-btn reply-btn" aria-label="Reply">Reply</button>
             <button class="action-btn delete-btn" aria-label="Delete">Delete</button>
         </div>
-        <div class="reply-form-container" style="display: none;"></div>
-        <div class="replies-container"></div>
-    `;
+        <div class="reply-form-container"></div>
+        <div class="replies-container"></div>`;
 
-    element.querySelector('.reply-btn').addEventListener('click', () => toggleReplyForm(element, ['comments', id]));
-    element.querySelector('.delete-btn').addEventListener('click', () => handleDeleteClick(path));
+    element.querySelector('.reply-btn').addEventListener('click', () => toggleReplyForm(element, myPath));
+    element.querySelector('.delete-btn').addEventListener('click', () => handleDeleteClick(myPath));
     return element;
 }
 
 function createReplyElement(id, data, parentCollectionPath) {
     const element = document.createElement('div');
     element.classList.add('comment-item', 'reply-item');
-    element.dataset.id = id;
-    const date = timeAgo(safeToDate(data.timestamp));
     const myPath = [...parentCollectionPath, id];
 
     element.innerHTML = `
         <div class="comment-header">
             <span class="comment-author">${escapeHTML(data.name)}</span>
-            <span class="comment-date">${date}</span>
+            <span class="comment-date">${timeAgo(safeToDate(data.timestamp))}</span>
         </div>
         <p class="comment-body">${escapeHTML(data.comment)}</p>
         <div class="comment-actions">
             <button class="action-btn reply-btn" aria-label="Reply">Reply</button>
             <button class="action-btn delete-btn" aria-label="Delete">Delete</button>
         </div>
-        <div class="reply-form-container" style="display: none;"></div>
-        <div class="replies-container"></div>
-    `;
+        <div class="reply-form-container"></div>
+        <div class="replies-container"></div>`;
     
     element.querySelector('.reply-btn').addEventListener('click', () => toggleReplyForm(element, myPath));
     element.querySelector('.delete-btn').addEventListener('click', () => handleDeleteClick(myPath));
@@ -336,9 +311,11 @@ function createReplyElement(id, data, parentCollectionPath) {
 
 function toggleReplyForm(commentElement, collectionPathToPostTo) {
     const replyFormContainer = commentElement.querySelector('.reply-form-container');
-    if (replyFormContainer.style.display === 'none') {
-        document.querySelectorAll('.reply-form-container').forEach(c => { c.style.display = 'none'; c.innerHTML = ''; });
-        replyFormContainer.style.display = 'block';
+    const isOpen = replyFormContainer.innerHTML !== '';
+
+    document.querySelectorAll('.reply-form-container').forEach(c => c.innerHTML = '');
+
+    if (!isOpen) {
         replyFormContainer.innerHTML = `
             <form class="reply-form">
                 <div class="form-group"><input type="text" class="reply-name-input" placeholder="Your name" required maxlength="50" aria-label="Your Name for Reply"></div>
@@ -351,14 +328,8 @@ function toggleReplyForm(commentElement, collectionPathToPostTo) {
         const replyForm = replyFormContainer.querySelector('.reply-form');
         const postPath = [...collectionPathToPostTo, 'replies'];
         replyForm.addEventListener('submit', (e) => handleReplySubmit(e, postPath));
-        replyFormContainer.querySelector('.cancel-reply-btn').addEventListener('click', () => {
-            replyFormContainer.style.display = 'none';
-            replyFormContainer.innerHTML = '';
-        });
+        replyFormContainer.querySelector('.cancel-reply-btn').addEventListener('click', () => replyFormContainer.innerHTML = '');
         replyForm.querySelector('input.reply-name-input').focus();
-    } else {
-        replyFormContainer.style.display = 'none';
-        replyFormContainer.innerHTML = '';
     }
 }
 
@@ -371,27 +342,27 @@ function updateCharCounter() {
 }
 
 function escapeHTML(str) {
-    if (typeof str !== 'string') str = '';
-    const p = document.createElement('p');
-p.textContent = str;
-    return p.innerHTML;
+    return String(str ?? '').replace(/[&<>"']/g, (match) => {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[match];
+    });
 }
 
 function safeToDate(timestamp) {
-    return (timestamp && typeof timestamp.toDate === 'function') ? timestamp.toDate() : null;
+    return (timestamp && typeof timestamp.toDate === 'function') ? timestamp.toDate() : new Date();
 }
 
 function timeAgo(date) {
-    if (!date) return 'Just now';
     const seconds = Math.floor((new Date() - date) / 1000);
     if (seconds < 5) return "just now";
-    let interval = seconds / 31536000; if (interval > 1) return Math.floor(interval) + " years ago";
-    interval = seconds / 2592000; if (interval > 1) return Math.floor(interval) + " months ago";
-    interval = seconds / 86400; if (interval > 1) return Math.floor(interval) + " days ago";
-    interval = seconds / 3600; if (interval > 1) return Math.floor(interval) + " hours ago";
-    interval = seconds / 60; if (interval > 1) return Math.floor(interval) + " minutes ago";
-    return Math.floor(seconds) + " seconds ago";
+    const intervals = { 'year': 31536000, 'month': 2592000, 'day': 86400, 'hour': 3600, 'minute': 60, 'second': 1 };
+    for (let unit in intervals) {
+        let interval = seconds / intervals[unit];
+        if (interval > 1) {
+            const floor = Math.floor(interval);
+            return `${floor} ${unit}${floor === 1 ? '' : 's'} ago`;
+        }
+    }
+    return 'just now';
 }
 
-// Start the application logic once the page is loaded
 document.addEventListener('DOMContentLoaded', initApp);
