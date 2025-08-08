@@ -202,52 +202,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firebase Comment System</title>
+    <!-- This is a standalone example. The user can copy the body's content into their site. -->
+    
+    <!-- STEP 1: Link to the hosted CSS file -->
     <link rel="stylesheet" href="https://appcomment.web.app/index.css">
+
+    <!-- Recommended: Add Google Fonts for better typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Join the Conversation</h1>
-            <p>Leave a comment below</p>
-        </header>
+    <!-- Add this entire firebase-comments-widget block to your page where you want comments -->
+    <div class="firebase-comments-widget">
+        <div class="container">
+            <header>
+                <h1>Join the Conversation</h1>
+                <p>Leave a comment below</p>
+            </header>
 
-        <section class="comment-form-section" hidden>
-            <form id="comment-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" placeholder="Your name" required aria-label="Name" maxlength="50">
-                </div>
-                <div class="form-group">
-                    <label for="comment">Comment</label>
-                    <textarea id="comment" rows="4" placeholder="Write your comment..." required aria-label="Comment" maxlength="1000"></textarea>
-                    <div class="char-counter-wrapper">
-                        <span id="char-counter">0 / 1000</span>
+            <section class="comment-form-section" hidden>
+                <form id="comment-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your name" required aria-label="Name" maxlength="50">
                     </div>
+                    <div class="form-group">
+                        <label for="comment">Comment</label>
+                        <textarea id="comment" rows="4" placeholder="Write your comment..." required aria-label="Comment" maxlength="1000"></textarea>
+                        <div class="char-counter-wrapper">
+                            <span id="char-counter">0 / 1000</span>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit-button">Post Comment</button>
+                </form>
+            </section>
+
+            <hr>
+
+            <section class="comments-section">
+                <h2>Comments</h2>
+                <div id="comments-list">
+                    <!-- Dynamic content is loaded here -->
                 </div>
-                <button type="submit" id="submit-button">Post Comment</button>
-            </form>
-        </section>
-
-        <hr>
-
-        <section class="comments-section">
-            <h2>Comments</h2>
-            <div id="comments-list">
-                <!-- Content will be dynamically inserted here by JavaScript -->
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-
-    <!-- Firebase v9 Modular SDK -->
-    <script type="module" src="https://appcomment.web.app/index.js"></script>
+    
+    <!-- STEP 2: Link to the hosted JavaScript file at the end of your body -->
+  <script type="module" src="comment.js"></script>
 
 </body>
 </html>
-
 
                          </div>
                     </aside>
