@@ -193,10 +193,31 @@
                         </div>
                          <div class="sidebar-widget">
                              <div id="comment-section"></div>
-                             <div id="root">
+                         
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Comment System</title>
+    <link rel="stylesheet" href="index.css" />
+  <script type="importmap">
+{
+  "imports": {
+    "jsdom": "https://esm.sh/jsdom@^26.1.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root">
       <div class="container">
         <h1>Leave a Comment</h1>
-       
+        <p>
+          Your comment will be publicly visible in the configured GitHub
+          repository.
+        </p>
 
         <form id="comment-form" class="comment-form">
           <div class="form-group">
@@ -204,7 +225,7 @@
             <input
               id="name"
               type="text"
-              placeholder="Your Name..."
+              placeholder="e.g., Himanshu Tyagi"
               required
               autocomplete="name"
             />
@@ -227,7 +248,7 @@
 
         <section class="comments-section" aria-labelledby="comments-heading">
           <div class="comments-header">
-            <h2 id="comments-heading">Comments</h2>
+            <h2 id="comments-heading">Live Comments</h2>
             <button
               id="refresh-btn"
               class="refresh-btn"
@@ -258,7 +279,10 @@
       </div>
     </div>
 
-    <script type="module" src="https://comment-murex-beta.vercel.app/index.js"></script>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
+
                          </div>
                     </aside>
                 </div>
