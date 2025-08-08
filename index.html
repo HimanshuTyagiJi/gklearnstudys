@@ -195,93 +195,59 @@
                              <div id="comment-section"></div>
                          
 
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GitHub Comment System</title>
-    <link rel="stylesheet" href="index.css" />
-  <script type="importmap">
-{
-  "imports": {
-    "jsdom": "https://esm.sh/jsdom@^26.1.0"
-  }
-}
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Comment System</title>
+    <link rel="stylesheet" href="https://appcomment.web.app/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-  <body>
-    <div id="root">
-      <div class="container">
-        <h1>Leave a Comment</h1>
-        <p>
-          Your comment will be publicly visible in the configured GitHub
-          repository.
-        </p>
+<body>
 
-        <form id="comment-form" class="comment-form">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input
-              id="name"
-              type="text"
-              placeholder="e.g., Himanshu Tyagi"
-              required
-              autocomplete="name"
-            />
-          </div>
-          <div class="form-group">
-            <label for="comment">Comment</label>
-            <textarea
-              id="comment"
-              placeholder="Write your comment here..."
-              required
-            ></textarea>
-          </div>
-          <button type="submit" id="submit-btn" class="submit-btn">
-            <span class="btn-text">Submit Comment</span>
-            <span class="spinner" style="display: none"></span>
-          </button>
-        </form>
+    <div class="container">
+        <header>
+            <h1>Join the Conversation</h1>
+            <p>Leave a comment below</p>
+        </header>
 
-        <div id="status-container" aria-live="polite"></div>
-
-        <section class="comments-section" aria-labelledby="comments-heading">
-          <div class="comments-header">
-            <h2 id="comments-heading">Live Comments</h2>
-            <button
-              id="refresh-btn"
-              class="refresh-btn"
-              aria-label="Refresh comments"
-              title="Refresh comments"
-            >
-              <svg
-                class="icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="20"
-                height="20"
-              >
-                <path
-                  d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
-                ></path>
-              </svg>
-            </button>
-          </div>
-          <iframe
-            id="comments-iframe"
-            class="comments-iframe"
-            title="Live Comments from GitHub"
-            src="about:blank"
-          ></iframe>
+        <section class="comment-form-section" hidden>
+            <form id="comment-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name" required aria-label="Name" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea id="comment" rows="4" placeholder="Write your comment..." required aria-label="Comment" maxlength="1000"></textarea>
+                    <div class="char-counter-wrapper">
+                        <span id="char-counter">0 / 1000</span>
+                    </div>
+                </div>
+                <button type="submit" id="submit-button">Post Comment</button>
+            </form>
         </section>
-      </div>
+
+        <hr>
+
+        <section class="comments-section">
+            <h2>Comments</h2>
+            <div id="comments-list">
+                <!-- Content will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
     </div>
 
-    <script type="module" src="https://comment-murex-beta.vercel.app/index.js"></script>
-  </body>
+    <!-- Firebase v9 Modular SDK -->
+    <script type="module" src="https://appcomment.web.app/index.js"></script>
+
+</body>
 </html>
+
 
                          </div>
                     </aside>
