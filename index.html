@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,6 +51,7 @@
         <meta name="msapplication-TileImage" content="https://gklearnstudy.in/images/conversion.webp" />
         <meta name="msapplication-config" content="browserconfig.xml" />
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="post.css">
     <link rel="stylesheet" href="/index.css">
 </head>
     <body>
@@ -191,18 +193,66 @@
                             </ul>
                         </div>
                          <div class="sidebar-widget">
-                             <div id="comment-section">
+                             <div id="new-comment-system-container">
                                 <h3>Leave a Comment</h3>
-                                <div id="comment-auth-area"></div>
-                             <iframe
-  src="https://comment-murex-beta.vercel.app/"
-  width="100%"
-  height="500px"
-  style="border: none;"
-  loading="lazy"
-></iframe>
-
-                              
+                                <form id="comment-form" class="comment-form">
+                                  <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <input
+                                      id="name"
+                                      type="text"
+                                      placeholder="Your Name..."
+                                      required
+                                      autocomplete="name"
+                                    />
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="comment">Comment</label>
+                                    <textarea
+                                      id="comment"
+                                      placeholder="Write your comment here..."
+                                      required
+                                    ></textarea>
+                                  </div>
+                                  <button type="submit" id="submit-btn" class="submit-btn">
+                                    <span class="btn-text">Submit Comment</span>
+                                    <span class="spinner" style="display: none"></span>
+                                  </button>
+                                </form>
+                        
+                                <div id="status-container" aria-live="polite"></div>
+                        
+                                <section class="comments-section" aria-labelledby="comments-heading">
+                                  <div class="comments-header">
+                                    <h4 id="comments-heading">Comments</h4>
+                                    <button
+                                      id="refresh-btn"
+                                      class="refresh-btn"
+                                      aria-label="Refresh comments"
+                                      title="Refresh comments"
+                                    >
+                                      <svg
+                                        class="icon"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        width="20"
+                                        height="20"
+                                      >
+                                        <path
+                                          d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
+                                        ></path>
+                                      </svg>
+                                    </button>
+                                  </div>
+                                  <iframe
+                                    id="comments-iframe"
+                                    class="comments-iframe"
+                                    title="Live Comments from GitHub"
+                                    src="about:blank"
+                                    style="height: 400px;"
+                                  ></iframe>
+                                </section>
                             </div>
                          </div>
                     </aside>
@@ -266,6 +316,7 @@
 
         <script src="search.js"></script>
         <script src="index.js" defer></script>
+        <script type="module" src="https://comment-murex-beta.vercel.app/index.js"></script>
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>
