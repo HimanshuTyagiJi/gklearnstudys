@@ -1488,7 +1488,7 @@ body {
   
   .app-footer {
      padding: 3rem 1.5rem;
-     margin: 4rem -1.5rem -1.5rem -1.5rem;
+
   }
 }
 
@@ -1505,10 +1505,7 @@ body {
     padding: 1rem;
   }
   
-  .app-footer {
-     margin: 4rem -1rem -1rem -1rem;
-  }
-
+ 
   .app-title {
     font-size: 2rem;
   }
