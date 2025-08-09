@@ -1548,3 +1548,8 @@ body {
     background-color: transparent;
     max-width: 100%;
 }
+.category-list a: + .category-count,
+.category-list a.active-category + .category-count {
+    background-color: var(--accent-color);
+    color: white;
+}
