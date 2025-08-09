@@ -132,10 +132,7 @@
 }
 
 .firebase-comments-widget .comments-section {
-    max-height: 60vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 10px; /* Add space for scrollbar to prevent content overlap */
+    overflow-x: hidden; /* Prevent horizontal scrollbars from appearing */
 }
 
 .firebase-comments-widget .comments-section h2 {
@@ -242,7 +239,7 @@
 .firebase-comments-widget .reply-form-actions .cancel-reply-btn { background-color: #e0e0e0; color: var(--text-color); }
 .firebase-comments-widget .reply-form-actions .cancel-reply-btn:hover { background-color: #ccc; }
 
-/* === NEW: NESTED REPLY STYLES === */
+/* === NESTED REPLY STYLES === */
 
 /* Default container for all replies. This creates the first level of indentation. */
 .firebase-comments-widget .replies-container {
