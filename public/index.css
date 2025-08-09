@@ -1538,8 +1538,6 @@ body {
 
 /* Custom Comment Section Layout */
 #custom-comment-section {
-    overflow-y: auto;
-    max-height: 80vh;
     padding: 0;
     border: none;
 }
