@@ -102,11 +102,11 @@
   font-weight: 500;
 }
 
-.category-list a: {
+.category-list a:hover {
   color: var(--accent-color);
 }
 
-.category-list a: + .category-count,
+.category-list a:hover + .category-count,
 .category-list a.active-category + .category-count {
     background-color: var(--accent-color);
     color: white;
@@ -145,7 +145,7 @@
     transition: transform 0.2s ease-in-out;
 }
 
-.featured-post-link: {
+.featured-post-link:hover {
     transform: scale(1.03);
 }
 
@@ -1547,9 +1547,4 @@ body {
     box-shadow: none;
     background-color: transparent;
     max-width: 100%;
-}
-.category-list a: + .category-count,
-.category-list a.active-category + .category-count {
-    background-color: var(--accent-color);
-    color: white;
 }
