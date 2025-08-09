@@ -64,14 +64,6 @@
   gap: 2rem;
 }
 
-.sidebar h3 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-family: 'Lora', serif;
-  color: var(--text-primary);
-  text-align: left;
-}
-
 .category-list {
   list-style: none;
   padding: 0;
@@ -130,7 +122,11 @@
     margin-top: 0;
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border-color);
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    color: var(--green);
+    text-align: left;
+    border-bottom: 2px solid var(--green);
 }
 
 .sidebar-widget:last-child h3 { /* remove border on last widget's title */
