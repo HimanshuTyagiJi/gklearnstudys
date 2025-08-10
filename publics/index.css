@@ -1492,7 +1492,7 @@ body {
 
 @media (max-width: 480px) {
   #root {
-    padding: 0;
+    padding: 5px;
   }
 
   .app-title {
