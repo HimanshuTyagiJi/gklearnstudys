@@ -307,7 +307,9 @@
   align-items: start;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 900px) {.app-footer {
+  margin-left: 15%;
+}
   .details-layout-adv {
     grid-template-columns: 3fr 1.5fr;
     grid-template-areas: "prose sidebar";
@@ -681,6 +683,4 @@
   --border-color: #898989 !important;
   --shadow-color: rgba(29, 44, 61, 0.1);
 }
-.app-footer {
-  margin-left: 15%;
-}
+
