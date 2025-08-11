@@ -4,8 +4,7 @@
   background-color: var(--card-bg);
   padding: 5px;
   border-radius: 12px;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 12px var(--shadow-color);
+
   margin-top: 2rem;
 }
 
@@ -670,9 +669,7 @@
   .details-sidebar-adv {
     position: static;
   }
-  .details-prose-adv {
-    padding: 0rem;
-  }
+  
 }
 :root {
   --primary-bg: #f4f8fa;
