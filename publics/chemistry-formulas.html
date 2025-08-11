@@ -53,16 +53,152 @@
         <div class="main-content-wrapper">
             <main class="container">
                 <div id="root">
-                   <header class="education-header">
-    <h1>Chemistry Hub</h1>
-    <p class="education-description">
-        Welcome to Chemistry Hub — a place where learning chemistry becomes easy and interesting. 
-        Here you can find clear explanations, interactive diagrams, and practical examples for every 
-        chemistry topic. Whether you are starting with the basics or preparing for higher classes, 
-        this hub will guide you step-by-step. Explore the periodic table, learn about elements, 
-        reactions, and everyday applications of chemistry in a simple way that anyone can understand.
-    </p>
+          <style>
+    .education-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: #0a0f1f;
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        flex-wrap: wrap; /* Mobile के लिए wrap */
+    }
+
+    /* Background SVG pattern */
+    .education-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;utf8,<svg width="220" height="220" xmlns="http://www.w3.org/2000/svg" opacity="0.05"><polygon points="110,10 210,60 210,160 110,210 10,160 10,60" stroke="white" stroke-width="2" fill="none"/><circle cx="110" cy="110" r="30" stroke="white" stroke-width="2" fill="none"/></svg>') repeat;
+        z-index: 0;
+    }
+
+    .logo {
+        flex-shrink: 0;
+        z-index: 1;
+        text-align: center;
+    }
+
+    .education-title {
+        font-size: 2.5rem;
+        margin: 0;
+        animation: fadeScale 1.5s ease-in-out forwards;
+        z-index: 1;
+    }
+
+    .underline {
+        height: 4px;
+        background: linear-gradient(90deg, green, blue, yellow, red, green);
+        background-size: 300% 100%;
+        animation: gradientMove 3s linear infinite;
+        margin-top: 5px;
+        border-radius: 2px;
+    }
+
+    .education-description {
+        margin: 10px 0 0 0;
+        max-width: 640px;
+        line-height: 1.5;
+        font-size: 1rem;
+        z-index: 1;
+    }
+
+    /* Animations */
+    @keyframes fadeScale {
+        0% { opacity: 0; transform: scale(0.8); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 300% 50%; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .education-header {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .education-description {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<header class="education-header">
+    <!-- Animated SVG Logo -->
+    <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="200" height="200" role="img" aria-labelledby="atomTitle atomDesc">
+            <title id="atomTitle">Animated Atom</title>
+            <desc id="atomDesc">A glowing animated atomic model with rotating electron orbits using colorful gradients.</desc>
+
+            <!-- Gradient definition -->
+            <defs>
+                <linearGradient id="gAtom" x1="0" x2="1">
+                    <stop offset="0" stop-color="#34d399"/>
+                    <stop offset="0.5" stop-color="#60a5fa"/>
+                    <stop offset="1" stop-color="#fbbf24"/>
+                </linearGradient>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <!-- Nucleus -->
+            <circle cx="150" cy="150" r="20" fill="url(#gAtom)" stroke="#fff" stroke-width="2" filter="url(#glow)"/>
+
+            <!-- Orbit paths -->
+            <g stroke="url(#gAtom)" stroke-width="2" fill="none" opacity="0.85">
+                <ellipse cx="150" cy="150" rx="80" ry="40">
+                    <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="6s" repeatCount="indefinite"/>
+                </ellipse>
+                <ellipse cx="150" cy="150" rx="40" ry="80">
+                    <animateTransform attributeName="transform" type="rotate" from="360 150 150" to="0 150 150" dur="7s" repeatCount="indefinite"/>
+                </ellipse>
+                <ellipse cx="150" cy="150" rx="100" ry="100" transform="rotate(45 150 150)">
+                    <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="10s" repeatCount="indefinite"/>
+                </ellipse>
+            </g>
+
+            <!-- Electrons -->
+            <circle cx="230" cy="150" r="6" fill="#fff">
+                <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="6s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="150" cy="230" r="6" fill="#fff">
+                <animateTransform attributeName="transform" type="rotate" from="360 150 150" to="0 150 150" dur="7s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="220" cy="220" r="6" fill="#fff">
+                <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="10s" repeatCount="indefinite"/>
+            </circle>
+        </svg>
+    </div>
+
+    <!-- Text Content -->
+    <div>
+        <h1 class="education-title">Chemistry Hub</h1>
+        <div class="underline"></div>
+        <p class="education-description">
+            Welcome to <strong>Chemistry Hub</strong> — your ultimate space for exploring the microscopic world of atoms and molecules.  
+            Our goal is to make chemistry not only understandable but truly fascinating. Through interactive visuals, animated models, and easy explanations, 
+            you’ll see how atoms combine, react, and form everything around us — from the air you breathe to the devices you use daily.  
+            Dive into the periodic table, learn how chemical bonds work, and discover the real-life applications of science. Whether you're a student preparing for exams 
+            or simply curious about how matter behaves, this is the perfect place to spark your scientific curiosity.
+        </p>
+    </div>
 </header>
+
 
 
                     <div class="periodic-table-container">
