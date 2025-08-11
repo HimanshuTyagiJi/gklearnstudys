@@ -1,12 +1,12 @@
 function initHeader() {
     const menuLinks = [
         { href: "/", text: "Home" },
-        { href: "/education.html", text: "Education" },
-        { href: "/all-formulas.html", text: "All Formula" },
-        { href: "/computer.html", text: "Computer" },
-        { href: "/kaise-karen.html", text: "How to" },
-        { href: "/gk-quiz.html", text: "GK Quiz" },
-        { href: "/test.html", text: "Test" },
+        { href: "education.html", text: "Education" },
+        { href: "all-formulas.html", text: "All Formula" },
+        { href: "computer.html", text: "Computer" },
+        { href: "kaise-karen.html", text: "How to" },
+        { href: "gk-quiz.html", text: "GK Quiz" },
+        { href: "test.html", text: "Test" },
     ];
 
     const headerHTML = `
