@@ -1,12 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-
-
-
-// --- Start of Core UI Initialization ---
 function initHeader() {
     const menuLinks = [
         { href: "/", text: "Home" },
@@ -15,7 +6,7 @@ function initHeader() {
         { href: "/computer.html", text: "Computer" },
         { href: "/kaise-karen.html", text: "How to" },
         { href: "/gk-quiz.html", text: "GK Quiz" },
-        { href: "/test.html", text: "golu" },
+        { href: "/test.html", text: "Test" },
     ];
 
     const headerHTML = `
