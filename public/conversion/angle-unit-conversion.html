@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Angle Conversion Tool & Guide | Degrees, Radians, Gradians | GK Learn Study</title>
+        <meta name="description" content="An interactive tool and comprehensive guide to angle unit conversion. Easily convert between degrees, radians, and gradians. Learn the formulas, history, and practical applications in math, science, and engineering." />
+        <meta name="keywords" content="angle conversion, convert degrees to radians, convert radians to degrees, angle converter, gradians, angle formulas, trigonometry, geometry, unit conversion tool" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href="https://gklearnstudy.in/conversion/angle-unit-conversion.html" />
+        <link rel="stylesheet" href="../index.css" />
+
+        <link rel="stylesheet" href="../conversion-tool.css" />        <link rel="stylesheet" href="../topicmenu.css" />
+        <link rel="stylesheet" href="../comment.css" />
+        <link rel="stylesheet" href="../comment2.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+      <div id="sidebar-overlay"></div>
+        <button id="topic-sidebar-toggle" aria-label="Toggle topics navigation">☰ Topics</button>
+        
+        <aside id="topic-sidebar">
+            <h3>Conversion Tools</h3>
+            <nav id="topic-nav">
+                <ul>
+                    <li><a href="/conversion.html">All Converters</a></li>
+                    <li><a href="/conversion/angle-unit-conversion.html" class="active">Angle Conversion</a></li>
+                    <li><a href="/conversion/temperature-conversion.html">Temperature Conversion</a></li>
+                    <li><a href="/conversion/area-volume-measurement.html">Area & Volume</a></li>
+                    <li><a href="/conversion/measurement-systems.html">Measurement Systems</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+
+        <div class="main-content-wrapper">
+            <main class="container">
+                <div id="root">
+                    <header class="education-header">
+                        <div class="logo" style="max-width: 200px; margin: 0 auto 1rem auto;">
+                            <svg viewBox="0 0 100 100" role="img" aria-labelledby="angleTitle">
+                                <title id="angleTitle">Animated Angle Conversion Icon</title>
+                                <defs>
+                                    <linearGradient id="gradNeedle" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#f87171"/>
+                                        <stop offset="100%" stop-color="#ef4444"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M 10 90 A 80 80 0 0 1 90 90 L 50 90 Z" fill="#3b82f6" opacity="0.1"/>
+                                <path d="M 10 90 A 80 80 0 0 1 90 90" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                                <g stroke="#93c5fd" stroke-width="1">
+                                    <line x1="50" y1="90" x2="10" y2="10" />
+                                    <line x1="50" y1="90" x2="30" y2="23.5" />
+                                    <line x1="50" y1="90" x2="50" y2="10" />
+                                    <line x1="50" y1="90" x2="70" y2="23.5" />
+                                    <line x1="50" y1="90" x2="90" y2="10" />
+                                </g>
+                                <line x1="50" y1="90" x2="50" y2="15" stroke="url(#gradNeedle)" stroke-width="3" stroke-linecap="round">
+                                    <animateTransform attributeName="transform" type="rotate" from="-60 50 90" to="60 50 90" dur="4s" repeatCount="indefinite" additive="sum" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" keyTimes="0;0.5;1"/>
+                                </line>
+                                <circle cx="50" cy="90" r="4" fill="#ef4444"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="education-title">Angle Unit Conversion</h1>
+                            <p class="education-description">Master the art of converting angles between degrees, radians, and gradians. This guide provides a powerful interactive tool, detailed formulas, and practical examples to help you navigate the world of angular measurements with ease.</p>
+                        </div>
+                    </header>
+                    
+                    <div class="conversion-tool-container">
+                        <div class="conversion-tool-grid">
+                            <div class="converter-widget">
+                                <h2>Angle Converter Tool</h2>
+                                <table id="angleConverterTable" class="converter-table">
+                                  <tr>
+                                    <td>Degrees (°)</td>
+                                    <td><input type="number" id="inputDegrees" placeholder="e.g., 90" /></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Radians (rad)</td>
+                                    <td><input type="number" id="inputRadians" placeholder="e.g., 1.5708" /></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Gradians (grad)</td>
+                                    <td><input type="number" id="inputGradians" placeholder="e.g., 100" /></td>
+                                  </tr>
+                                </table>
+                            </div>
+                            <div class="converter-widget">
+                                <h2>Quick Formulas</h2>
+                                <div class="quick-formulas-grid">
+                                    <div class="formula-card">
+                                        <h4>Degrees to Radians</h4>
+                                        <p>rad = deg &times; <span class="bracket">(</span><span class="frac"><span>&pi;</span><span class="bottom">180</span></span><span class="bracket">)</span></p>
+                                    </div>
+                                    <div class="formula-card">
+                                        <h4>Radians to Degrees</h4>
+                                        <p>deg = rad &times; <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">&pi;</span></span><span class="bracket">)</span></p>
+                                    </div>
+                                    <div class="formula-card">
+                                        <h4>Degrees to Gradians</h4>
+                                        <p>grad = deg &times; <span class="bracket">(</span><span class="frac"><span>200</span><span class="bottom">180</span></span><span class="bracket">)</span></p>
+                                    </div>
+                                    <div class="formula-card">
+                                        <h4>Gradians to Degrees</h4>
+                                        <p>deg = grad &times; <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">200</span></span><span class="bracket">)</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <article class="article-content">
+                        <h2>Understanding Angle Measurements</h2>
+                        <p>An angle is a fundamental concept in geometry, representing the figure formed by two rays, called the sides of the angle, sharing a common endpoint, called the vertex. The measurement of an angle quantifies the amount of rotation between these two rays. While we often think of angles in everyday terms like "a sharp turn" or "a wide corner," precise fields like mathematics, physics, and engineering require standardized units of measurement. Understanding how to convert between these units is a critical skill for accuracy and collaboration across different disciplines.</p>
+
+                        <h3>The Primary Units of Angle Measurement</h3>
+                        <p>There are three primary systems for measuring angles, each with its own history and area of application.</p>
+                        
+                        <h4>1. Degrees (°)</h4>
+                        <p>The degree is the most familiar unit of angle measurement. A full circle is divided into 360 degrees. This system dates back to ancient Babylonia, where their base-60 numeral system made 360 a highly convenient number for division. A degree is often subdivided for higher precision:</p>
+                        <ul>
+                            <li><b>Arcminute ('):</b> One degree is equal to 60 arcminutes.</li>
+                            <li><b>Arcsecond ("):</b> One arcminute is equal to 60 arcseconds.</li>
+                        </ul>
+                        <p>This system is prevalent in geography (latitude and longitude), astronomy, and everyday applications like construction and design.</p>
+                        <div class="formula-box">1 full circle = 360°<br>1° = 60'<br>1' = 60"</div>
+
+                        <h4>2. Radians (rad)</h4>
+                        <p>In higher mathematics and physics, the radian is the standard unit of angular measure. It is defined by the geometry of a circle itself. One radian is the angle subtended at the center of a circle by an arc that is equal in length to the circle's radius. Since the circumference of a circle is <code>2πr</code>, a full circle contains <code>2π</code> radians. Radians are preferred in calculus because they simplify many important formulas, particularly those involving trigonometric functions and their derivatives.</p>
+                        <div class="formula-box">1 full circle = 2π radians ≈ 6.283 rad</div>
+                        
+                        <h4>3. Gradians (grad or gon)</h4>
+                        <p>The gradian is a less common unit that is part of the metric system. It divides a right angle into 100 parts, meaning a full circle contains 400 gradians. Its main advantage is its compatibility with the decimal system, which can simplify some calculations in fields like surveying and civil engineering. However, it has not gained widespread adoption compared to degrees and radians.</p>
+                        <div class="formula-box">1 full circle = 400 grad</div>
+                    </article>
+
+                    <div class="faq-section">
+                        <h2>Solved Examples: Angle Conversions</h2>
+                        
+                        <h4>1. Convert 60° to Radians</h4>
+                        <ul>
+                            <li>Step 1: Use the formula: Radians = Degrees × (π/180)</li>
+                            <li>Step 2: Apply values: Radians = 60 × <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">180</span></span><span class="bracket">)</span></li>
+                            <li>Step 3: Simplify: Radians = <span class="frac"><span>60π</span><span class="bottom">180</span></span></li>
+                            <li><b>Answer:</b> <span class="frac"><span>π</span><span class="bottom">3</span></span> rad</li>
+                        </ul>
+
+                        <h4>2. Convert 1 Radian to Degrees</h4>
+                        <ul>
+                            <li>Step 1: Use the formula: Degrees = Radians × (180/π)</li>
+                            <li>Step 2: Apply values: Degrees = 1 × <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">π</span></span><span class="bracket">)</span></li>
+                            <li>Step 3: Calculate the value: Degrees ≈ 180 / 3.14159</li>
+                            <li><b>Answer:</b> ≈ 57.296°</li>
+                        </ul>
+
+                        <h4>3. Convert 100° to Gradians</h4>
+                        <ul>
+                            <li>Step 1: Use the formula: Gradians = Degrees × (200/180)</li>
+                            <li>Step 2: Apply values: Gradians = 100 × <span class="bracket">(</span><span class="frac"><span>200</span><span class="bottom">180</span></span><span class="bracket">)</span></li>
+                            <li>Step 3: Simplify: Gradians = 100 × <span class="bracket">(</span><span class="frac"><span>10</span><span class="bottom">9</span></span><span class="bracket">)</span> = <span class="frac"><span>1000</span><span class="bottom">9</span></span></li>
+                            <li><b>Answer:</b> ≈ 111.11 grad</li>
+                        </ul>
+
+                        <h4>4. Convert 200 Gradians to Degrees</h4>
+                        <ul>
+                            <li>Step 1: Use the formula: Degrees = Gradians × (180/200)</li>
+                            <li>Step 2: Apply values: Degrees = 200 × <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">200</span></span><span class="bracket">)</span></li>
+                            <li>Step 3: Simplify: Degrees = 180</li>
+                            <li><b>Answer:</b> 180°</li>
+                        </ul>
+
+                        <h4>5. Convert 30° to Radians</h4>
+                        <ul>
+                            <li>Step 1: Radians = 30 × <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">180</span></span><span class="bracket">)</span> = <span class="frac"><span>30π</span><span class="bottom">180</span></span></li>
+                            <li><b>Answer:</b> <span class="frac"><span>π</span><span class="bottom">6</span></span> rad</li>
+                        </ul>
+
+                        <h4>6. Convert 45° to Radians</h4>
+                        <ul>
+                            <li>Step 1: Radians = 45 × <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">180</span></span><span class="bracket">)</span> = <span class="frac"><span>45π</span><span class="bottom">180</span></span></li>
+                            <li><b>Answer:</b> <span class="frac"><span>π</span><span class="bottom">4</span></span> rad</li>
+                        </ul>
+
+                        <h4>7. Convert 90° to Radians</h4>
+                        <ul>
+                            <li>Step 1: Radians = 90 × <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">180</span></span><span class="bracket">)</span> = <span class="frac"><span>90π</span><span class="bottom">180</span></span></li>
+                            <li><b>Answer:</b> <span class="frac"><span>π</span><span class="bottom">2</span></span> rad</li>
+                        </ul>
+
+                        <h4>8. Convert 180° to Radians</h4>
+                        <ul>
+                            <li>Step 1: Radians = 180 × <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">180</span></span><span class="bracket">)</span></li>
+                            <li><b>Answer:</b> π rad</li>
+                        </ul>
+
+                        <h4>9. Convert 270° to Radians</h4>
+                        <ul>
+                            <li>Step 1: Radians = 270 × <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">180</span></span><span class="bracket">)</span> = <span class="frac"><span>270π</span><span class="bottom">180</span></span></li>
+                            <li><b>Answer:</b> <span class="frac"><span>3π</span><span class="bottom">2</span></span> rad</li>
+                        </ul>
+
+                        <h4>10. Convert 360° to Radians</h4>
+                        <ul>
+                            <li>Step 1: Radians = 360 × <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">180</span></span><span class="bracket">)</span></li>
+                            <li><b>Answer:</b> 2π rad</li>
+                        </ul>
+
+                        <h4>11. Convert π/6 rad to Degrees</h4>
+                        <ul>
+                            <li>Step 1: Degrees = <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">6</span></span><span class="bracket">)</span> × <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">π</span></span><span class="bracket">)</span> = <span class="frac"><span>180</span><span class="bottom">6</span></span></li>
+                            <li><b>Answer:</b> 30°</li>
+                        </ul>
+
+                        <h4>12. Convert π/4 rad to Degrees</h4>
+                        <ul>
+                            <li>Step 1: Degrees = <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">4</span></span><span class="bracket">)</span> × <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">π</span></span><span class="bracket">)</span> = <span class="frac"><span>180</span><span class="bottom">4</span></span></li>
+                            <li><b>Answer:</b> 45°</li>
+                        </ul>
+
+                        <h4>13. Convert π/2 rad to Degrees</h4>
+                        <ul>
+                           <li>Step 1: Degrees = <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">2</span></span><span class="bracket">)</span> × <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">π</span></span><span class="bracket">)</span> = <span class="frac"><span>180</span><span class="bottom">2</span></span></li>
+                            <li><b>Answer:</b> 90°</li>
+                        </ul>
+
+                        <h4>14. Convert 3π/2 rad to Degrees</h4>
+                        <ul>
+                            <li>Step 1: Degrees = <span class="bracket">(</span><span class="frac"><span>3π</span><span class="bottom">2</span></span><span class="bracket">)</span> × <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">π</span></span><span class="bracket">)</span> = <span class="frac"><span>540</span><span class="bottom">2</span></span></li>
+                            <li><b>Answer:</b> 270°</li>
+                        </ul>
+
+                        <h4>15. Convert 2π rad to Degrees</h4>
+                        <ul>
+                            <li>Step 1: Degrees = 2π × <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">π</span></span><span class="bracket">)</span> = 2 × 180</li>
+                            <li><b>Answer:</b> 360°</li>
+                        </ul>
+
+                        <h4>16. Convert 90° to Gradians</h4>
+                        <ul>
+                            <li>Step 1: Gradians = 90 × <span class="bracket">(</span><span class="frac"><span>200</span><span class="bottom">180</span></span><span class="bracket">)</span> = <span class="frac"><span>18000</span><span class="bottom">180</span></span></li>
+                            <li><b>Answer:</b> 100 grad</li>
+                        </ul>
+
+                        <h4>17. Convert 180° to Gradians</h4>
+                        <ul>
+                            <li>Step 1: Gradians = 180 × <span class="bracket">(</span><span class="frac"><span>200</span><span class="bottom">180</span></span><span class="bracket">)</span></li>
+                            <li><b>Answer:</b> 200 grad</li>
+                        </ul>
+
+                        <h4>18. Convert 270° to Gradians</h4>
+                        <ul>
+                            <li>Step 1: Gradians = 270 × <span class="bracket">(</span><span class="frac"><span>200</span><span class="bottom">180</span></span><span class="bracket">)</span> = 270 × <span class="bracket">(</span><span class="frac"><span>10</span><span class="bottom">9</span></span><span class="bracket">)</span></li>
+                            <li><b>Answer:</b> 300 grad</li>
+                        </ul>
+
+                        <h4>19. Convert 50 grad to Degrees</h4>
+                        <ul>
+                            <li>Step 1: Degrees = 50 × <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">200</span></span><span class="bracket">)</span> = 50 × <span class="bracket">(</span><span class="frac"><span>9</span><span class="bottom">10</span></span><span class="bracket">)</span></li>
+                            <li><b>Answer:</b> 45°</li>
+                        </ul>
+
+                        <h4>20. Convert 150 grad to Degrees</h4>
+                        <ul>
+                            <li>Step 1: Degrees = 150 × <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">200</span></span><span class="bracket">)</span> = 1.5 × 90</li>
+                            <li><b>Answer:</b> 135°</li>
+                        </ul>
+
+                        <h4>21. Convert 100 grad to Radians</h4>
+                        <ul>
+                            <li>Step 1: Radians = 100 × <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">200</span></span><span class="bracket">)</span> = <span class="frac"><span>100π</span><span class="bottom">200</span></span></li>
+                            <li><b>Answer:</b> <span class="frac"><span>π</span><span class="bottom">2</span></span> rad</li>
+                        </ul>
+
+                        <h4>22. Convert 200 grad to Radians</h4>
+                        <ul>
+                            <li>Step 1: Radians = 200 × <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">200</span></span><span class="bracket">)</span></li>
+                            <li><b>Answer:</b> π rad</li>
+                        </ul>
+
+                        <h4>23. Convert π rad to Gradians</h4>
+                        <ul>
+                            <li>Step 1: Gradians = π × <span class="bracket">(</span><span class="frac"><span>200</span><span class="bottom">π</span></span><span class="bracket">)</span></li>
+                            <li><b>Answer:</b> 200 grad</li>
+                        </ul>
+
+                        <h4>24. Convert 1.5 rad to Degrees</h4>
+                        <ul>
+                            <li>Step 1: Degrees = 1.5 × <span class="bracket">(</span><span class="frac"><span>180</span><span class="bottom">π</span></span><span class="bracket">)</span> = <span class="frac"><span>270</span><span class="bottom">π</span></span></li>
+                            <li><b>Answer:</b> ≈ 85.94°</li>
+                        </ul>
+
+                        <h4>25. Convert 120° to Radians</h4>
+                        <ul>
+                            <li>Step 1: Radians = 120 × <span class="bracket">(</span><span class="frac"><span>π</span><span class="bottom">180</span></span><span class="bracket">)</span> = <span class="frac"><span>120π</span><span class="bottom">180</span></span></li>
+                            <li><b>Answer:</b> <span class="frac"><span>2π</span><span class="bottom">3</span></span> rad</li>
+                        </ul>
+                    </div>
+
+
+                    <!-- Comments Section -->
+                    <div class="comments-wrapper">
+                        <hr>
+                         <h3>Leave a Comment</h3>
+                        <div id="custom-comment-section">
+                            <div class="firebase-comments-widget">
+                                <div class="container">
+                                    <section class="comment-form-section" hidden>
+                                        <form id="comment-form">
+                                            <div class="form-group">
+                                                <label for="name">Name</label>
+                                                <input type="text" id="name" placeholder="Your name" required aria-label="Name" maxlength="50">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="comment">Comment</label>
+                                                <textarea id="comment" rows="4" placeholder="Write your comment..." required aria-label="Comment" maxlength="1000"></textarea>
+                                                <div class="char-counter-wrapper">
+                                                    <span id="char-counter">0 / 1000</span>
+                                                </div>
+                                            </div>
+                                            <button type="submit" id="submit-button">Submit</button>
+                                        </form>
+                                    </section>
+                                    <hr>
+                                    <section class="comments-section">
+                                        <div id="comments-list">
+                                            <!-- Dynamic content is loaded here -->
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <ul id="suggestions-list" class="suggestions" style="display: none;"></ul>
+
+             <footer class="app-footer">
+                <div class="footer-content">
+                    <div class="footer-section footer-about">
+                        <h3>About GK Learn Study</h3>
+                        <p>Your one-stop destination for knowledge, tools, and tutorials on a wide range of subjects. We aim to make learning easy and accessible for everyone.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/contact.html">Contact Us</a></li>
+                            <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="/terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Conversions & Measurements</h3>
+                        <ul>
+                            <li><a href="/conversion.html">Unit Conversion</a></li>
+                            <li><a href="/conversion/angle-unit-conversion">Angle Conversion</a></li>
+                            <li><a href="/conversion/temperature-conversion">Temperature Conversion</a></li>
+                            <li><a href="/conversion/measurement-systems">Measurement Systems</a></li>
+                            <li><a href="/conversion/area-volume-measurement">Area & Volume</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Science & GK</h3>
+                        <ul>
+                            <li><a href="/computer/what-is-algorithm">What is an Algorithm?</a></li>
+                            <li><a href="/computer/what-is-cloud-computing">Cloud Computing Guide</a></li>
+                            <li><a href="/gk/why-is-sky-blue">Why is the Sky Blue?</a></li>
+                            <li><a href="/gk/ancient-wonders">Ancient Wonders</a></li>
+                            <li><a href="/gk/solar-system-tour">Solar System Tour</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Follow Us</h3>
+                        <ul class="footer-socials"></ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">&copy; 2024 GK Learn Study | All Rights Reserved</div>
+            </footer>
+
+            <button id="back-to-top-btn" title="Go to top">↑</button>
+        </div>
+
+        <script src="../search.js"></script>
+        <script src="../index.js" defer></script>
+        <script type="module" src="../comment.js"></script>
+        <script src="../topic-menu.js" defer></script>
+        <script src="../conversion-tools.js" defer></script>
+        <script type="module" src="/index.tsx"></script>
+    </body>
+</html>
