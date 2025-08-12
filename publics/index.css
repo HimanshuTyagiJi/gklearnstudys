@@ -1254,13 +1254,14 @@ body {
   }
   .post-card-image,
   .post-card-svg-container svg {
+    widht:250px;
     height: 250px;
   }
 }
 
 .post-card-image,
 .post-card-svg-container svg {
- 
+
   max-height: 220px;
 
   display: flex;
