@@ -1260,7 +1260,7 @@ body {
 
 .post-card-image,
 .post-card-svg-container svg {
-  max-width: 120px;
+ 
   max-height: 220px;
 
   display: flex;
