@@ -1162,7 +1162,7 @@ body {
 
 .search-input {
   width: 100%;
-  max-width: 600px;
+  max-width: 80%;
   padding: 1rem 1.5rem;
   font-size: 1rem;
   border-radius: 50px;
