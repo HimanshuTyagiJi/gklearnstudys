@@ -202,12 +202,63 @@ window.GKApp.searchData = [
     url: "/conversion/angle-unit-conversion",
     paragraph:
       "Angle conversion is the process of converting angles between different units like degrees, radians, and gradians. Types: 1. Degree to Radian 2. Radian to Degree.",
-    svg: `<svg viewBox="0 0 100 100">
-        <style>.protractor-base{fill:#3498db;opacity:0.2;}.protractor-lines{stroke:#3498db;stroke-width:1;}.needle{stroke:#e74c3c;stroke-width:3;transform-origin:50px 90px;animation:sweep-angle 4s ease-in-out infinite alternate;}@keyframes sweep-angle{from{transform:rotate(-60deg)}to{transform:rotate(60deg)}}</style>
-        <path class="protractor-base" d="M10 90 A 40 40 0 0 1 90 90 Z" />
-        <path class="protractor-lines" d="M10 90 A 40 40 0 0 1 90 90" />
-        <line class="needle" x1="50" y1="90" x2="50" y2="30" />
-    </svg>`,
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="440" height="440" role="img" aria-labelledby="title desc">
+  <title id="title">Degrees Conversion - Animated Icon</title>
+  <desc id="desc">Animated degrees icon with rotating pointer</desc>
+  <style>
+    .circle-bg {
+      fill: #3b82f6;
+      filter: drop-shadow(0 6px 8px rgba(59, 130, 246, 0.4));
+    }
+    .outer-ring {
+      fill: none;
+      stroke: #93c5fd;
+      stroke-width: 8;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: dash 3s forwards ease-out;
+    }
+    .pointer {
+      fill: #f97316;
+      transform-origin: 110px 110px;
+      animation: swing 4s ease-in-out infinite;
+    }
+    .center-circle {
+      fill: #f97316;
+    }
+    .label {
+      fill: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      text-anchor: middle;
+      user-select: none;
+    }
+    @keyframes swing {
+      0%, 100% { transform: rotate(-15deg); }
+      50% { transform: rotate(15deg); }
+    }
+    @keyframes dash {
+      to { stroke-dashoffset: 0; }
+    }
+  </style>
+
+  <!-- Background circle -->
+  <circle cx="110" cy="110" r="100" class="circle-bg" />
+  
+  <!-- Outer ring with dash animation -->
+  <circle cx="110" cy="110" r="90" class="outer-ring" />
+  
+  <!-- Pointer (like a protractor needle) -->
+  <rect x="108" y="30" width="4" height="80" rx="2" ry="2" class="pointer" />
+  
+  <!-- Center circle -->
+  <circle cx="110" cy="110" r="12" class="center-circle" />
+
+  <!-- Label -->
+  <text x="110" y="190" class="label">Degrees (°)</text>
+</svg>
+`,
     date: "October 22, 2023",
     author: "Himanshu Tyagi",
     category: "Angle Conversion",
