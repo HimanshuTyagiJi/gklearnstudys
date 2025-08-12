@@ -1024,16 +1024,16 @@ summary::-webkit-details-marker {
   transform: translateX(5px);
 }
 .result-image {
-  width: 60px;
-  height: 60px;
-  min-width: 60px;
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
   object-fit: cover;
   border-radius: 8px;
 }
 .result-svg-container {
-  width: 60px;
-  height: 60px;
-  min-width: 60px;
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -1055,14 +1055,14 @@ summary::-webkit-details-marker {
 }
 .result-title {
   color: var(--link-active-color);
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
   margin: 0 0 4px 0;
   text-align: left;
 }
 .result-paragraph {
   color: var(--text);
-  font-size: 14px;
+  font-size: 12px;
   margin: 0;
   overflow: hidden;
   display: -webkit-box;
