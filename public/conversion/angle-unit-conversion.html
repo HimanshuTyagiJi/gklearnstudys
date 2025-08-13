@@ -132,7 +132,8 @@
                                     <td>Gradians (grad)</td>
                                     <td><input type="number" id="inputGradians" placeholder="e.g., 100" /></td>
                                   </tr>
-                                </table><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="250" height="250" role="img" aria-labelledby="title desc">
+                                </table>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="250" height="250" role="img" aria-labelledby="title desc" style="display:block; margin:auto;">
   <title id="title">Degrees Conversion - Animated Icon</title>
   <desc id="desc">Animated degrees icon with rotating pointer</desc>
   <style>
@@ -173,21 +174,24 @@
     }
   </style>
 
-  <!-- Background circle -->
-  <circle cx="110" cy="110" r="100" class="circle-bg" />
-  
-  <!-- Outer ring with dash animation -->
-  <circle cx="110" cy="110" r="90" class="outer-ring" />
-  
-  <!-- Pointer (like a protractor needle) -->
-  <rect x="108" y="30" width="4" height="80" rx="2" ry="2" class="pointer" />
-  
-  <!-- Center circle -->
-  <circle cx="110" cy="110" r="12" class="center-circle" />
+  <g>
+    <!-- Background circle -->
+    <circle cx="110" cy="110" r="100" class="circle-bg" />
+    
+    <!-- Outer ring with dash animation -->
+    <circle cx="110" cy="110" r="90" class="outer-ring" />
+    
+    <!-- Pointer (like a protractor needle) -->
+    <rect x="108" y="30" width="4" height="80" rx="2" ry="2" class="pointer" />
+    
+    <!-- Center circle -->
+    <circle cx="110" cy="110" r="12" class="center-circle" />
 
-  <!-- Label -->
-  <text x="110" y="190" class="label">Degrees (°)</text>
+    <!-- Label -->
+    <text x="110" y="190" class="label">Degrees (°)</text>
+  </g>
 </svg>
+
                             </div>
                             <div class="converter-widget">
                                 <h2>Quick Formulas</h2>
