@@ -109,17 +109,6 @@
     font-weight: 600;
 }
 
-.formula-box {
-    background: var(--primary-bg);
-    padding: 1rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--accent-color);
-    margin: 1rem 0;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1rem;
-    overflow-x: auto;
-}
-
 /* Fraction styles */
 .frac { 
     display: inline-flex;
@@ -141,25 +130,14 @@
     vertical-align: -0.2em;
 }
 
-/* Quick Formulas Table */
-.quick-formulas-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.95rem;
+/* Quick Formulas Grid */
+.quick-formulas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
 }
-.quick-formulas-table td {
-    padding: 0.8rem;
-    border-bottom: 1px solid var(--border-color);
-}
-.quick-formulas-table td:first-child {
-    font-weight: 500;
-}
-.quick-formulas-table tr:hover {
-    background-color: var(--card-bg);
-}
-.quick-formulas-table td:nth-child(2) {
-    white-space: nowrap;
-}
+
 
 /* Solved Examples Section */
 .solved-examples-section {
@@ -247,7 +225,7 @@
     color: var(--green);
 }
 
-.example-solution .example-formula {
+.example-formula {
     background: var(--card-bg);
     padding: 1rem 1.5rem;
     border-radius: 8px;
