@@ -230,7 +230,7 @@
     padding: 1rem 1.5rem;
     border-radius: 8px;
     border: 1px dashed var(--accent-color);
-    margin: 1.5rem 0;
+   
     font-family: 'Lora', serif;
     font-size: 1.1rem;
     overflow-x: auto;
