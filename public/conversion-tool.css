@@ -263,6 +263,7 @@
     cursor: pointer;
     list-style: none; /* Remove default marker */
     width: 100%;
+    gap: 1rem; /* Add spacing between text and icon */
 }
 
 .faq-section summary::-webkit-details-marker {
@@ -275,7 +276,6 @@
     font-weight: 400;
     color: var(--accent-color);
     transition: transform 0.2s ease-in-out;
-    margin-left: 1rem;
     flex-shrink: 0;
 }
 
@@ -291,31 +291,49 @@
 }
 
 
-/* Responsive Converter Table */
+/* Responsive Styles for Mobile */
 @media (max-width: 576px) {
-    .converter-table tr {
-        display: block;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 1rem;
+    .conversion-tool-container {
+        padding: 1.5rem 1rem; /* More space on sides for mobile */
     }
-    .converter-table tr:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
+    
+    .converter-widget {
+        padding: 1rem; /* Reduce padding inside widgets */
     }
+
+    /* Angle Converter Tool: Side-by-side layout */
     .converter-table td {
-        display: block;
-        width: 100% !important;
-        padding: 0.5rem 0;
-        text-align: left;
+        padding: 0.5rem; /* Reduce padding to fit */
+        display: table-cell; /* Ensure they behave like table cells */
+        vertical-align: middle;
     }
+
     .converter-table td:first-child {
-        font-weight: 500;
-        margin-bottom: 0.25rem;
+        width: 1%; /* Shrink to fit content */
+        padding-right: 0.75rem; /* Space between label and input */
     }
+
     .converter-table input {
-        width: 100%;
-        font-size: 1.1rem;
+        font-size: 1.1rem; /* Keep text legible */
+    }
+    
+    /* Quick Formulas Table: Ensure it fills the width */
+    .quick-formulas-table {
+        font-size: 0.9rem; /* Slightly smaller font to prevent overflow issues */
+    }
+    
+    .quick-formulas-table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    /* FAQ Summary: Improve text wrapping */
+    .faq-section summary {
+        line-height: 1.4; /* Better spacing if text wraps to two lines */
+        align-items: flex-start; /* Align '+' icon to the top of the first line */
+        padding: 1rem; /* Adjust padding for mobile */
+    }
+
+    .faq-section details p {
+        padding: 0 1rem 1rem 1rem; /* Adjust padding for consistency */
     }
 }
