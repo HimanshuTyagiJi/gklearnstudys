@@ -19,7 +19,7 @@ function initHeader() {
         <div id="reading-progress-bar"></div>
         <header class="header" id="header">
             <nav class="navbar container1">
-                <a href="/" class="brand" aria-label="GK Learn Study">
+                <a href="https://himanshutyagiji.github.io/gklearnstudys/public" class="brand" aria-label="GK Learn Study">
                     <div class="logo-container1">
                         <div class="demo2">
                              <svg width="40" height="40" viewBox="0 0 300 300">
