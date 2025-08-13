@@ -126,26 +126,12 @@
                             </div>
                             <div class="converter-widget">
                                 <h2>Quick Formulas</h2>
-                                <table class="quick-formulas-table">
-                                    <tbody>
-                                        <tr>
-                                            <td>Degrees to Radians</td>
-                                            <td>rad = deg &times; <span class="frac"><span>&pi;</span><span class="bottom">180</span></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Radians to Degrees</td>
-                                            <td>deg = rad &times; <span class="frac"><span>180</span><span class="bottom">&pi;</span></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Degrees to Gradians</td>
-                                            <td>grad = deg &times; <span class="frac"><span>200</span><span class="bottom">180</span></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gradians to Degrees</td>
-                                            <td>deg = grad &times; <span class="frac"><span>180</span><span class="bottom">200</span></span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="quick-formulas-grid">
+                                    <div class="example-formula">Radians = Degrees &times; <span class="frac"><span>&pi;</span><span class="bottom">180</span></span></div>
+                                    <div class="example-formula">Degrees = Radians &times; <span class="frac"><span>180</span><span class="bottom">&pi;</span></span></div>
+                                    <div class="example-formula">Gradians = Degrees &times; <span class="frac"><span>200</span><span class="bottom">180</span></span></div>
+                                    <div class="example-formula">Degrees = Gradians &times; <span class="frac"><span>180</span><span class="bottom">200</span></span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,25 +150,25 @@
                             <li><b>Arcsecond ("):</b> One arcminute is equal to 60 arcseconds.</li>
                         </ul>
                         <p>This system is prevalent in geography (latitude and longitude), astronomy, and everyday applications like construction and design.</p>
-                        <div class="formula-box" style="white-space: nowrap;">1 full circle = 360°<br>1° = 60'<br>1' = 60"</div>
+                        <div class="example-formula">1 full circle = 360°&nbsp;&nbsp;|&nbsp;&nbsp;1° = 60'&nbsp;&nbsp;|&nbsp;&nbsp;1' = 60"</div>
 
                         <h4>2. Radians (rad)</h4>
                         <p>In higher mathematics and physics, the radian is the standard unit of angular measure. It is defined by the geometry of a circle itself. One radian is the angle subtended at the center of a circle by an arc that is equal in length to the circle's radius. Since the circumference of a circle is <code>2πr</code>, a full circle contains <code>2π</code> radians. Radians are preferred in calculus because they simplify many important formulas, particularly those involving trigonometric functions and their derivatives.</p>
-                        <div class="formula-box" style="white-space: nowrap;">1 full circle = 2π radians ≈ 6.283 rad</div>
+                        <div class="example-formula">1 full circle = 2π radians ≈ 6.283 rad</div>
                         
                         <h4>3. Gradians (grad or gon)</h4>
                         <p>The gradian is a less common unit that is part of the metric system. It divides a right angle into 100 parts, meaning a full circle contains 400 gradians. Its main advantage is its compatibility with the decimal system, which can simplify some calculations in fields like surveying and civil engineering. However, it has not gained widespread adoption compared to degrees and radians.</p>
-                        <div class="formula-box" style="white-space: nowrap;">1 full circle = 400 grad</div>
+                        <div class="example-formula">1 full circle = 400 grad</div>
 
                         <h3>The 'Why' Behind Conversion Formulas</h3>
                         <p>Conversion formulas are not arbitrary; they are derived from the fundamental relationship that a full circle is the same amount of rotation regardless of the unit. This gives us a powerful equivalence:</p>
-                        <div class="formula-box" style="white-space: nowrap; text-align: center;">360° = 2π rad = 400 grad</div>
+                        <div class="example-formula">360° = 2π rad = 400 grad</div>
                         <p>From this core identity, we can derive any conversion factor. For example, to find the relationship between degrees and radians, we use:</p>
-                        <p><code>360° = 2π rad</code></p>
+                        <div class="example-formula">360° = 2π rad</div>
                         <p>Dividing both sides by 360 gives us the value of one degree:</p>
-                        <p><code>1° = <span class="frac"><span>2&pi;</span><span class="bottom">360</span></span> rad = <span class="frac"><span>&pi;</span><span class="bottom">180</span></span> rad</code></p>
+                        <div class="example-formula">1° = <span class="frac"><span>2&pi;</span><span class="bottom">360</span></span> rad = <span class="frac"><span>&pi;</span><span class="bottom">180</span></span> rad</div>
                         <p>This is why we multiply by <b>π/180</b> to convert from degrees to radians. Similarly, dividing both sides by 2π gives us the value of one radian:</p>
-                        <p><code>1 rad = <span class="frac"><span>360</span><span class="bottom">2&pi;</span></span> ° = <span class="frac"><span>180</span><span class="bottom">&pi;</span></span> °</code></p>
+                        <div class="example-formula">1 rad = <span class="frac"><span>360</span><span class="bottom">2&pi;</span></span> ° = <span class="frac"><span>180</span><span class="bottom">&pi;</span></span> °</div>
                         <p>This is why we multiply by <b>180/π</b> to convert from radians to degrees. The same logic applies to all other conversion pairs.</p>
 
                         <h3>Common Angle Conversion Table</h3>
