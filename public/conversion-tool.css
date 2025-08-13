@@ -122,18 +122,19 @@
 
 /* Fraction styles */
 .frac { 
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
     position: relative;
-    vertical-align: -0.5em;
     margin: 0 0.2em;
     text-align: center;
+    font-weight: bold;
 }
 .frac > span {
     display: block;
-    padding: 0.1em 0.2em;
+    padding: 0.2em 0.3em;
 }
 .frac span.bottom {
-    border-top: 1px solid currentColor;
+    border-top: 2px solid currentColor;
 }
 .bracket {
     font-size: 1.5em;
@@ -167,43 +168,103 @@
 
 .examples-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
 }
 
 .example-item {
     background-color: var(--primary-bg);
     padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 5px solid var(--accent-color);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    border-left: 6px solid var(--accent-color);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .example-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .example-item h3 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.1rem;
-    color: var(--text-primary);
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    color: var(--accent-color);
     margin: 0 0 1rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
 }
 
 .example-solution p {
-    margin: 0.5rem 0;
-    line-height: 1.6;
+    margin: 0.75rem 0;
+    line-height: 1.7;
     font-size: 1rem;
+    color: #4a4a4a;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0.02);
+    border-left: 3px solid rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] .example-solution p {
+    color: #c0c0c0;
+    background-color: rgba(255,255,255,0.04);
+    border-left: 3px solid rgba(255,255,255,0.1);
+}
+
+.example-solution p > b {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+[data-theme="dark"] .example-solution p > b {
+    color: #f0f0f0;
 }
 
 .example-answer {
-    font-weight: bold;
-    color: var(--accent-color);
-    margin-top: 1rem !important;
-    border-top: 1px dashed var(--border-color);
-    padding-top: 0.75rem;
+    font-weight: 700;
+    color: var(--green);
+    margin-top: 1.5rem !important;
+    border: 1.5px solid var(--green);
+    padding: 0.75rem 1rem;
+    background-color: rgba(6, 107, 29, 0.05);
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
 }
+
+.example-answer b {
+   color: inherit;
+}
+
+[data-theme="dark"] .example-answer {
+    background-color: rgba(52, 249, 93, 0.1);
+    border-color: var(--green);
+    color: var(--green);
+}
+
+.example-solution .example-formula {
+    background: var(--card-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px dashed var(--accent-color);
+    margin: 1.5rem 0;
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    color: var(--accent-color);
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
 
 /* Common Angles Table Wrapper */
 .common-angles-table-wrapper {
