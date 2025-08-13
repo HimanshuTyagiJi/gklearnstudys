@@ -975,7 +975,6 @@ input {
 summary {
   display: inline-flex;
   cursor: pointer;
-  white-space: nowrap;
 }
 summary::-webkit-details-marker {
   display: none;
