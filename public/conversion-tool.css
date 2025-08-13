@@ -51,6 +51,7 @@
     font-weight: 500;
     color: var(--text-primary);
     width: 40%;
+    white-space: nowrap;
 }
 
 .converter-table input {
@@ -76,7 +77,7 @@
     line-height: 1.8;
 }
 
-.article-content h2 {
+.article-content h2, .solved-examples-section h2 {
     font-family: 'Lora', serif;
     font-size: 2rem;
     color: var(--text-primary);
@@ -117,4 +118,86 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 1rem;
     overflow-x: auto;
+}
+
+/* Fraction styles */
+.frac { 
+    display: inline-block;
+    position: relative;
+    vertical-align: -0.5em;
+    margin: 0 0.2em;
+    text-align: center;
+}
+.frac > span {
+    display: block;
+    padding: 0.1em 0.2em;
+}
+.frac span.bottom {
+    border-top: 1px solid currentColor;
+}
+.bracket {
+    font-size: 1.5em;
+    vertical-align: -0.2em;
+}
+
+/* Quick Formulas Table */
+.quick-formulas-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+.quick-formulas-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.quick-formulas-table td:first-child {
+    font-weight: 500;
+}
+.quick-formulas-table tr:hover {
+    background-color: var(--card-bg);
+}
+
+/* Solved Examples Section */
+.solved-examples-section {
+    margin-top: 3rem;
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.example-item {
+    background-color: var(--primary-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 5px solid var(--accent-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.example-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.example-item h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+}
+
+.example-solution p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.example-answer {
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-top: 1rem !important;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 0.75rem;
 }
