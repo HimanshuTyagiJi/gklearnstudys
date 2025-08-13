@@ -118,16 +118,9 @@ function initApp() {
         showMissingFilesError('html');
         return;
     }
-    // This check is for when the CSS is not loaded. If it's loaded, it will be 700px.
-    if (window.getComputedStyle(containerElement).getPropertyValue('max-width') !== '700px') {
-        // If it's inside our sidebar, the override will set max-width to 100%. This is OK.
-        // We only show the error if the style is the browser default, not our override.
-        const sidebarWidget = widgetContainer.closest('.sidebar-widget');
-        if (!sidebarWidget) {
-            showMissingFilesError('css');
-            return;
-        }
-    }
+    
+    // REMOVED: The check for CSS loading via getComputedStyle, which caused a forced reflow.
+    // This check was a safeguard, but assuming the CSS is linked correctly, it's better for performance to remove it.
     
     commentsList.innerHTML = `<div class="spinner-container"><div class="spinner"></div><p>Loading comments...</p></div>`;
 
@@ -318,11 +311,16 @@ function createReplyElement(id, data, parentCollectionPath) {
 
 function toggleReplyForm(commentElement, collectionPathToPostTo) {
     const replyFormContainer = commentElement.querySelector('.reply-form-container');
-    const isOpen = replyFormContainer.innerHTML !== '';
+    const wasOpen = replyFormContainer.innerHTML !== '';
 
-    document.querySelectorAll('.reply-form-container').forEach(c => c.innerHTML = '');
+    // First, perform all DOM writes.
+    // Close all open reply forms to ensure only one is open at a time.
+    document.querySelectorAll('.reply-form-container').forEach(c => {
+        c.innerHTML = '';
+    });
 
-    if (!isOpen) {
+    // If the clicked form was closed, now we open it.
+    if (!wasOpen) {
         replyFormContainer.innerHTML = `
             <form class="reply-form">
                 <div class="form-group"><input type="text" class="reply-name-input" placeholder="Your name" required maxlength="50" aria-label="Your Name for Reply"></div>
@@ -332,11 +330,21 @@ function toggleReplyForm(commentElement, collectionPathToPostTo) {
                     <button type="button" class="cancel-reply-btn">Cancel</button>
                 </div>
             </form>`;
+        
         const replyForm = replyFormContainer.querySelector('.reply-form');
+        const inputToFocus = replyForm.querySelector('input.reply-name-input');
         const postPath = [...collectionPathToPostTo, 'replies'];
+        
         replyForm.addEventListener('submit', (e) => handleReplySubmit(e, postPath));
-        replyFormContainer.querySelector('.cancel-reply-btn').addEventListener('click', () => replyFormContainer.innerHTML = '');
-        replyForm.querySelector('input.reply-name-input').focus();
+        replyFormContainer.querySelector('.cancel-reply-btn').addEventListener('click', () => {
+            replyFormContainer.innerHTML = '';
+        });
+
+        // Defer the focus() call to the next frame to avoid a forced reflow.
+        // This separates the read (implicit in focus()) from the preceding DOM writes.
+        requestAnimationFrame(() => {
+            inputToFocus.focus();
+        });
     }
 }
 
@@ -372,4 +380,33 @@ function timeAgo(date) {
     return 'just now';
 }
 
-document.addEventListener('DOMContentLoaded', initApp);
+document.addEventListener('DOMContentLoaded', () => {
+    const commentSectionContainer = document.getElementById('custom-comment-section');
+
+    if (!commentSectionContainer) {
+        return; // No comment section on this page
+    }
+
+    // Set up a temporary loader. This will be replaced by initApp's content.
+    const commentsList = commentSectionContainer.querySelector('#comments-list');
+    if (commentsList) {
+        commentsList.innerHTML = `<div class="spinner-container"><div class="spinner"></div><p>Waiting for comments...</p></div>`;
+    }
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // The comment section is visible, so initialize Firebase.
+                initApp();
+                // We only need to do this once.
+                observer.unobserve(commentSectionContainer);
+            }
+        });
+    }, {
+        rootMargin: '250px 0px', // Start loading when the user is 250px away from the comments.
+        threshold: 0.01
+    });
+
+    // Start observing the comment section container.
+    observer.observe(commentSectionContainer);
+});
