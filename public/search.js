@@ -5,7 +5,7 @@ window.GKApp = window.GKApp || {};
 window.GKApp.searchData = [
    {
     title: "Angle Conversion: Definition, Types, and Practical Applications",
-    url: "/conversion/angle-unit-conversion",
+    url: "https://himanshutyagiji.github.io/gklearnstudys/public/conversion/angle-unit-conversion",
     paragraph:
       "Angle conversion is the process of converting angles between different units like degrees, radians, and gradians. Types: 1. Degree to Radian 2. Radian to Degree.",
     svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="440" height="440" role="img" aria-labelledby="title desc">
@@ -72,7 +72,7 @@ window.GKApp.searchData = [
   {
     title:
       "Unit Conversion: Definition and Importance in Daily Life and Science",
-    url: "/conversion.html",
+    url: "https://himanshutyagiji.github.io/gklearnstudys/public/conversion.html",
     paragraph:
       "Unit conversion is the process of converting a quantity expressed in one unit to another. It helps in standardizing measurements and makes calculations simpler.",
     svg: `<svg  viewBox="0 0 320 320" width="640" height="640" role="img" aria-labelledby="title desc">
