@@ -64,7 +64,7 @@
   position: fixed;
   top: 70px;
   left: 15px;
-  z-index: 1;
+  z-index: 1000;
   background-color: var(--accent-color);
   color: white;
   border: none;
@@ -92,20 +92,22 @@
   display: block;
 }
 
-/* Desktop Layout */
+/* Desktop Layout - WIDER CONTENT AREA */
 @media (min-width: 992px) {
   .main-content-wrapper {
-    margin-left: 3%; /* Make space for the 280px sidebar */
-    padding-left: 10px; /* Add the requested 10px gap */
+    margin-left: 20%; /* Make space for the sidebar */
+    padding-left: 20px; /* Add a gap between sidebar and content */
   }
 
   #topic-sidebar {
     margin-top: 62px;
     transform: translateX(0);
-    width: 18%; /* fixed width for desktop */
-    height: 92%;
-    z-index: 0;
+    width: 20%; /* Sidebar takes up a percentage of the width */
+    max-width: 280px; /* But doesn't get too big */
+    height: calc(100vh - 62px); /* Adjust height for header */
+    z-index: 5; /* Position it below header but above content scroll */
   }
+
   #topic-sidebar-toggle,
   #sidebar-overlay {
     display: none; /* Not needed on desktop */
