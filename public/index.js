@@ -6,13 +6,13 @@
 // --- Start of Core UI Initialization ---
 function initHeader() {
   const menuLinks = [
-    { href: "/", text: "Home" },
-    { href: "/education.html", text: "Education" },
-    { href: "/all-formulas.html", text: "All Formula" },
-    { href: "/computer.html", text: "Computer" },
-    { href: "/kaise-karen.html", text: "How to" },
-    { href: "/gk-quiz.html", text: "GK Quiz" },
-    { href: "/test.html", text: "Test" },
+    { href: "https://himanshutyagiji.github.io/gklearnstudys/public", text: "Home" },
+    { href: "https://himanshutyagiji.github.io/gklearnstudys/public/education.html", text: "Education" },
+    { href: "https://himanshutyagiji.github.io/gklearnstudys/public/all-formulas.html", text: "All Formula" },
+    { href: "https://himanshutyagiji.github.io/gklearnstudys/public/computer.html", text: "Computer" },
+    { href: "https://himanshutyagiji.github.io/gklearnstudys/public/kaise-karen.html", text: "How to" },
+    { href: "https://himanshutyagiji.github.io/gklearnstudys/public/gk-quiz.html", text: "GK Quiz" },
+    { href: "https://himanshutyagiji.github.io/gklearnstudys/public/test.html", text: "Test" },
   ];
 
   const headerHTML = `
