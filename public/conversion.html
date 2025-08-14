@@ -1,1 +1,257 @@
 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Ultimate Guide to Unit Conversion | Interactive Tools & Formulas | GK Learn Study</title>
+        <meta name="description" content="A complete guide to unit conversion with powerful interactive tools. Convert length, mass, temperature, area, volume, and speed. Includes detailed definitions, formulas, and practical examples." />
+        <meta name="keywords" content="conversion, unit converter, length conversion, temperature conversion, mass conversion, area conversion, volume conversion, interactive tools, formulas, measurement guide" />
+        <meta name="author" content="Mr. Himanshu Tyagi" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://gklearnstudy.in/conversion.html" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <!-- Preconnect & Preload for Performance -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+        <!-- Non-Critical CSS: Loaded asynchronously -->
+        <link rel="preload" href="index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="index.css"></noscript>
+        
+        <link rel="stylesheet" href="conversion-page.css" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="conversion-page.css" /></noscript>
+    </head>
+    <body>
+        <main class="container">
+            <div id="root">
+                <header class="conversion-header">
+                    <div class="logo">
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="150" height="150" role="img" aria-labelledby="conversionTitleNew">
+                            <title id="conversionTitleNew">Animated SI Units Conversion Icon</title>
+                            <defs>
+                                <linearGradient id="grad-text" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#3b82f6"/>
+                                    <stop offset="100%" stop-color="#8b5cf6"/>
+                                </linearGradient>
+                            </defs>
+                            <g>
+                                <path d="M 100,20 A 80,80 0 1 1 20,100" fill="none" stroke="#e0e0e0" stroke-width="4" stroke-dasharray="8 8"/>
+                                <text x="100" y="115" font-family="'Lora', serif" font-size="50" fill="url(#grad-text)" text-anchor="middle" font-weight="bold">
+                                    <tspan id="unit-text">m</tspan>
+                                </text>
+                                <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="10s" repeatCount="indefinite"/>
+                            </g>
+                            <script>
+                                const textEl = document.getElementById('unit-text');
+                                const units = ['m', 'kg', 's', 'A', 'K', 'mol'];
+                                let i = 0;
+                                setInterval(() => {
+                                    i = (i + 1) % units.length;
+                                    textEl.textContent = units[i];
+                                }, 1667);
+                            </script>
+                       </svg>
+                    </div>
+                    <div class="content-text">
+                        <h1 class="title">The Ultimate Conversion Guide</h1>
+                        <p class="description">
+                            Welcome to your all-in-one hub for unit conversions. This page combines powerful, real-time interactive tools with detailed explanations, formulas, and practical examples to make any conversion simple and clear.
+                        </p>
+                    </div>
+                </header>
+
+                <!-- Length Conversion Section -->
+                <section class="article-section" id="length">
+                    <h2>Length Conversion</h2>
+                    <div class="info-box">
+                        <h3>What is Length?</h3>
+                        <p>Length is the measure of physical distance. It quantifies how long an object is or the distance between two points. It is a fundamental one-dimensional measurement.</p>
+                        <h3>Why does it matter?</h3>
+                        <p>Essential in daily life and various professions, from measuring fabric for clothing and dimensions for furniture, to architectural design, civil engineering, and scientific research.</p>
+                    </div>
+                    <div class="converter-widget" id="length-converter-widget">
+                        <div class="input-group"><label for="input-meters">Meters (m)</label><input type="number" id="input-meters" data-unit="m"></div>
+                        <div class="input-group"><label for="input-kilometers">Kilometers (km)</label><input type="number" id="input-kilometers" data-unit="km"></div>
+                        <div class="input-group"><label for="input-feet">Feet (ft)</label><input type="number" id="input-feet" data-unit="ft"></div>
+                        <div class="input-group"><label for="input-miles">Miles (mi)</label><input type="number" id="input-miles" data-unit="mi"></div>
+                    </div>
+                    <div class="example-box">
+                        <h4>Example: Convert 5 miles to kilometers.</h4>
+                        <p><b>Formula:</b> Kilometers = Miles × 1.60934</p>
+                        <p><b>Calculation:</b> 5 mi × 1.60934 = 8.0467 km</p>
+                    </div>
+                    <button class="read-more-btn">Read More on Length</button>
+                </section>
+                
+                <!-- Mass (Weight) Conversion Section -->
+                <section class="article-section" id="mass">
+                    <h2>Mass (Weight) Conversion</h2>
+                    <div class="info-box">
+                        <h3>What is Mass?</h3>
+                        <p>Mass measures the amount of matter in an object. While often used interchangeably with weight, weight is technically the force of gravity on an object's mass.</p>
+                        <h3>Why does it matter?</h3>
+                        <p>Crucial for cooking recipes, calculating medication dosages, shipping goods, scientific experiments, and tracking personal health and fitness.</p>
+                    </div>
+                    <div class="converter-widget" id="mass-converter-widget">
+                        <div class="input-group"><label for="input-kilograms">Kilograms (kg)</label><input type="number" id="input-kilograms" data-unit="kg"></div>
+                        <div class="input-group"><label for="input-grams">Grams (g)</label><input type="number" id="input-grams" data-unit="g"></div>
+                        <div class="input-group"><label for="input-pounds">Pounds (lb)</label><input type="number" id="input-pounds" data-unit="lb"></div>
+                        <div class="input-group"><label for="input-ounces">Ounces (oz)</label><input type="number" id="input-ounces" data-unit="oz"></div>
+                    </div>
+                    <div class="example-box">
+                        <h4>Example: Convert 150 pounds to kilograms.</h4>
+                        <p><b>Formula:</b> Kilograms = Pounds / 2.20462</p>
+                        <p><b>Calculation:</b> 150 lb / 2.20462 ≈ 68.04 kg</p>
+                    </div>
+                    <button class="read-more-btn">Read More on Mass</button>
+                </section>
+
+                <!-- Temperature Conversion Section -->
+                <section class="article-section" id="temperature">
+                    <h2>Temperature Conversion</h2>
+                    <div class="info-box">
+                        <h3>What is Temperature?</h3>
+                        <p>Temperature is a measure of the average kinetic energy of the particles in a substance, indicating its degree of hotness or coldness.</p>
+                        <h3>Why does it matter?</h3>
+                        <p>Vital for weather forecasting, cooking and food safety, medical diagnostics (body temperature), and controlling chemical reactions in science and industry.</p>
+                    </div>
+                    <div class="converter-widget" id="temperature-converter-widget">
+                        <div class="input-group"><label for="input-celsius">Celsius (°C)</label><input type="number" id="input-celsius" data-unit="c"></div>
+                        <div class="input-group"><label for="input-fahrenheit">Fahrenheit (°F)</label><input type="number" id="input-fahrenheit" data-unit="f"></div>
+                        <div class="input-group"><label for="input-kelvin">Kelvin (K)</label><input type="number" id="input-kelvin" data-unit="k"></div>
+                    </div>
+                    <div class="example-box">
+                        <h4>Example: Convert 25°C to Fahrenheit.</h4>
+                        <p><b>Formula:</b> °F = (°C × 9/5) + 32</p>
+                        <p><b>Calculation:</b> (25 × 1.8) + 32 = 45 + 32 = 77°F</p>
+                    </div>
+                    <button class="read-more-btn">Read More on Temperature</button>
+                </section>
+                
+                <!-- Area Conversion Section -->
+                <section class="article-section" id="area">
+                    <h2>Area Conversion</h2>
+                    <div class="info-box">
+                        <h3>What is Area?</h3>
+                        <p>Area measures the extent of a two-dimensional surface. It quantifies the space inside a flat shape, expressed in square units.</p>
+                        <h3>Why does it matter?</h3>
+                        <p>Fundamental for real estate (land size), agriculture (field planning), interior design (flooring and paint), and urban planning.</p>
+                    </div>
+                    <div class="converter-widget" id="area-converter-widget">
+                        <div class="input-group"><label for="input-sq-meters">Square Meters (m²)</label><input type="number" id="input-sq-meters" data-unit="m2"></div>
+                        <div class="input-group"><label for="input-sq-feet">Square Feet (ft²)</label><input type="number" id="input-sq-feet" data-unit="ft2"></div>
+                        <div class="input-group"><label for="input-acres">Acres</label><input type="number" id="input-acres" data-unit="ac"></div>
+                        <div class="input-group"><label for="input-hectares">Hectares</label><input type="number" id="input-hectares" data-unit="ha"></div>
+                    </div>
+                     <div class="example-box">
+                        <h4>Example: Convert 2 acres to square meters.</h4>
+                        <p><b>Formula:</b> Square Meters = Acres × 4046.86</p>
+                        <p><b>Calculation:</b> 2 ac × 4046.86 = 8093.72 m²</p>
+                    </div>
+                    <button class="read-more-btn">Read More on Area</button>
+                </section>
+                
+                 <!-- Volume Conversion Section -->
+                <section class="article-section" id="volume">
+                    <h2>Volume Conversion</h2>
+                     <div class="info-box">
+                        <h3>What is Volume?</h3>
+                        <p>Volume is the measure of three-dimensional space an object occupies or a container can hold, expressed in cubic units or capacity units like liters.</p>
+                        <h3>Why does it matter?</h3>
+                        <p>Used universally in cooking (liquid ingredients), vehicle fuel efficiency (gallons/liters), shipping logistics (cubic meters), and chemistry (solution measurements).</p>
+                    </div>
+                    <div class="converter-widget" id="volume-converter-widget">
+                        <div class="input-group"><label for="input-liters">Liters (L)</label><input type="number" id="input-liters" data-unit="l"></div>
+                        <div class="input-group"><label for="input-gallons">Gallons (US)</label><input type="number" id="input-gallons" data-unit="gal"></div>
+                        <div class="input-group"><label for="input-cubic-meters">Cubic Meters (m³)</label><input type="number" id="input-cubic-meters" data-unit="m3"></div>
+                        <div class="input-group"><label for="input-milliliters">Milliliters (ml)</label><input type="number" id="input-milliliters" data-unit="ml"></div>
+                    </div>
+                    <div class="example-box">
+                        <h4>Example: Convert 50 liters to US gallons.</h4>
+                        <p><b>Formula:</b> Gallons = Liters / 3.78541</p>
+                        <p><b>Calculation:</b> 50 L / 3.78541 ≈ 13.21 gallons</p>
+                    </div>
+                    <button class="read-more-btn">Read More on Volume</button>
+                </section>
+                
+                 <!-- Speed Conversion Section -->
+                <section class="article-section" id="speed">
+                    <h2>Speed Conversion</h2>
+                    <div class="info-box">
+                        <h3>What is Speed?</h3>
+                        <p>Speed is a scalar quantity that refers to "how fast an object is moving." It is the rate at which an object covers distance.</p>
+                        <h3>Why does it matter?</h3>
+                        <p>Critical for transportation (speed limits), aviation and maritime navigation (knots), athletics (race timings), and physics calculations.</p>
+                    </div>
+                    <div class="converter-widget" id="speed-converter-widget">
+                        <div class="input-group"><label for="input-kph">Kilometers/hr (kph)</label><input type="number" id="input-kph" data-unit="kph"></div>
+                        <div class="input-group"><label for="input-mph">Miles/hr (mph)</label><input type="number" id="input-mph" data-unit="mph"></div>
+                        <div class="input-group"><label for="input-mps">Meters/sec (m/s)</label><input type="number" id="input-mps" data-unit="mps"></div>
+                        <div class="input-group"><label for="input-knots">Knots</label><input type="number" id="input-knots" data-unit="knots"></div>
+                    </div>
+                     <div class="example-box">
+                        <h4>Example: Convert 100 kph to mph.</h4>
+                        <p><b>Formula:</b> Miles/hr = Kilometers/hr / 1.60934</p>
+                        <p><b>Calculation:</b> 100 kph / 1.60934 ≈ 62.14 mph</p>
+                    </div>
+                    <button class="read-more-btn">Read More on Speed</button>
+                </section>
+
+            </div>
+        </main>
+        
+        <ul id="suggestions-list" class="suggestions" style="display: none;"></ul>
+
+         <footer class="app-footer">
+            <div class="footer-content">
+                <div class="footer-section footer-about">
+                    <h3>About GK Learn Study</h3>
+                    <p>Your one-stop destination for knowledge, tools, and tutorials on a wide range of subjects. We aim to make learning easy and accessible for everyone.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
+                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Conversions & Measurements</h3>
+                    <ul>
+                        <li><a href="/conversion.html">Unit Conversion</a></li>
+                        <li><a href="/conversion/angle-unit-conversion.html">Angle Conversion</a></li>
+                        <li><a href="/conversion/temperature-conversion.html">Temperature Conversion</a></li>
+                        <li><a href="/conversion/area-volume-measurement.html">Area & Volume</a></li>
+                        <li><a href="/conversion/measurement-systems.html">Measurement Systems</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Science & GK</h3>
+                    <ul>
+                        <li><a href="/computer/what-is-algorithm">What is an Algorithm?</a></li>
+                        <li><a href="/computer/what-is-cloud-computing">Cloud Computing Guide</a></li>
+                        <li><a href="/gk/why-is-sky-blue">Why is the Sky Blue?</a></li>
+                        <li><a href="/gk/ancient-wonders">Ancient Wonders</a></li>
+                        <li><a href="/gk/solar-system-tour">Solar System Tour</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <ul class="footer-socials"></ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2024 GK Learn Study | All Rights Reserved</div>
+        </footer>
+
+        <button id="back-to-top-btn" title="Go to top">↑</button>
+
+        <script src="search.js" defer></script>
+        <script src="index.js" defer></script>
+        <script src="conversion-tools.js" defer></script>
+    </body>
+</html>
+
