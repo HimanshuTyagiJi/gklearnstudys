@@ -225,34 +225,16 @@ function initSocialLinks() {
 
   // Central place to manage all social media links. Just update the URL here.
   const socialLinksData = [
-    {
-      name: "Facebook",
-      url: "#", // Replace with your Facebook page URL
-      label: "Facebook",
-      title: "Follow us on Facebook",
-      svg: '<svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>',
-    },
+   
     {
       name: "YouTube",
-      url: "#", // Replace with your YouTube channel URL
+      url: "https://www.youtube.com/@GKLearnStudy", 
       label: "YouTube",
       title: "Subscribe to our YouTube channel",
       svg: '<svg viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>',
     },
-    {
-      name: "Telegram",
-      url: "#", // Replace with your Telegram channel URL
-      label: "Telegram",
-      title: "Join us on Telegram",
-      svg: '<svg viewBox="0 0 24 24"><path d="M21.8,3.3c-0.2-0.2-0.5-0.3-0.8-0.2L4.3,9.5c-0.6,0.2-0.6,1.1,0,1.3l4.3,1.4l1.4,4.3c0.2,0.6,1.1,0.6,1.3,0l6.4-16.7C22.1,3.8,22,3.5,21.8,3.3z M10.8,12.9l-3.2-1.1l10.3-6.5L10.8,12.9z"/></svg>',
-    },
-    {
-      name: "WhatsApp",
-      url: "#", // Replace with your WhatsApp contact/group URL
-      label: "WhatsApp",
-      title: "Contact us on WhatsApp",
-      svg: '<svg viewBox="0 0 24 24"><path d="M12.04,2C6.58,2,2.13,6.45,2.13,11.91c0,1.78,0.46,3.52,1.34,5.05l-1.4,5.04l5.14-1.35c1.47,0.8,3.14,1.24,4.84,1.24h0 c5.46,0,9.91-4.45,9.91-9.91C21.95,6.45,17.5,2,12.04,2z M16.6,15.26c-0.12,0.2-0.43,0.34-0.85,0.18c-0.42-0.16-1.8-0.89-3.43-2.12 c-1.28-0.97-2.15-2.17-2.4-2.54c-0.25-0.37-0.03-0.57,0.15-0.75c0.16-0.16,0.36-0.42,0.53-0.62c0.17-0.2,0.23-0.34,0.34-0.56 c0.12-0.23,0.06-0.44-0.03-0.62c-0.09-0.18-0.84-2.02-1.15-2.78C9.5,8.03,9.29,8.1,9.09,8.11c-0.18,0-0.39,0.01-0.58,0.01 c-0.2,0-0.5,0.08-0.76,0.37C7.52,8.71,6.9,9.24,6.9,10.15c0,0.91,0.78,1.86,0.89,2c0.12,0.14,1.81,2.92,4.39,4.11 c0.6,0.27,1.1,0.43,1.48,0.56c0.61,0.2,1.17,0.16,1.61,0.1c0.5-0.06,1.52-0.62,1.73-1.22c0.21-0.6,0.21-1.11,0.15-1.22 C16.96,15.53,16.72,15.46,16.6,15.26z"/></svg>',
-    },
+   
+  
   ];
 
   const linksHTML = socialLinksData
